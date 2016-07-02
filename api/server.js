@@ -1,43 +1,33 @@
 'use strict';
 
-/*
-server.js
-*/
-
-// external modules
+// include required external modules
 var express = require('express');
 var bodyParser = require('body-parser');
 var config = require('config');
 
-// internal modules
+// include required internal modules
 var services = require('./services');
+var routeConfig = require('./routeConfig');
 
 // create our app
 var app = express();
 
-// registering required midlewares to our app
+// registers the body parser which helps in reading req.body from api requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// configure all routes for articles related web api methods
-var articles = services.GetServiceInstance('articles');
-app.get('/articles', articles.findAll);
-app.get('/articles/:id', articles.findById);
-app.post('/articles/add', articles.add);
-app.post('/articles/update/:id', articles.update);
-app.delete('/articles/:id', articles.remove);
-
-// configure all routes for temples related web api methods
-var temples = services.GetServiceInstance('temples');
-app.get('/temples', temples.findAll);
-app.get('/temples/:id', temples.findById);
-app.post('/temples/add', temples.add);
-app.post('/temples/update/:id', temples.update);
-app.delete('/temples/:id', temples.remove);
+// register all routes to app
+var router = express.Router();
+routeConfig.register(router, services);
+app.use('/', router);
 
 // called by main.js and start's the server
 exports.start = function start(callback) {
-    // Starts app server
+
+    // initialize mongo db connection
+    services.init();
+
+    // Starts app server so that REST services will be exposed
     app.listen(
         config.appServer.port,
         config.appServer.host,
@@ -46,6 +36,4 @@ exports.start = function start(callback) {
             if (callback) callback();
         });
 
-    // starts data services
-    services.init();
 }

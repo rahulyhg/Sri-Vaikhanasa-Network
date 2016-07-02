@@ -1,24 +1,28 @@
 'use strict';
+/*
+generic repository module to perform basic db operations
+*/
 
+// include required external modules
 var config = require('config');
-var assert = require('assert');
 var mongo = require('mongodb');
-var ObjectId = mongo.ObjectID;
-var mongoClient = mongo.MongoClient;
+
+// holds mongo db connection object
 var db = null;
 
-exports.connectToDb = function () {
+// connects mongo db with configured url
+exports.connect = function () {
     if (db == null) {
-        mongoClient.connect(
+        mongo.MongoClient.connect(
             config.dbServer.url,
             function (err, dbInstance) {
-                assert.equal(null, err);
                 console.log('connected to mongo db....');
                 db = dbInstance;
             });
     }
 };
 
+// get all documents for the given collection
 exports.findAll = function (collectionName, errorCallback, successCallback) {
     db.collection(collectionName, function (err, collection) {
         handleErrorIfAny(err, errorCallback);
@@ -31,6 +35,7 @@ exports.findAll = function (collectionName, errorCallback, successCallback) {
     });
 };
 
+// gets document by its id for the given collection
 exports.findById = function (collectionName, id, errorCallback, successCallback) {
     var _id = new mongo.ObjectID(id);
     db.collection(collectionName, function (err, collection) {
@@ -45,6 +50,7 @@ exports.findById = function (collectionName, id, errorCallback, successCallback)
     });
 };
 
+// adds new document to given collection
 exports.add = function (collectionName, document, errorCallback, successCallback) {
     db.collection(collectionName, function (err, collection) {
         handleErrorIfAny(err, errorCallback);
@@ -58,6 +64,7 @@ exports.add = function (collectionName, document, errorCallback, successCallback
     });
 };
 
+// updates document by its id in given collection
 exports.update = function (collectionName, id, document, errorCallback, successCallback) {
     var _id = new mongo.ObjectID(id);
     db.collection(collectionName, function (err, collection) {
@@ -72,6 +79,7 @@ exports.update = function (collectionName, id, document, errorCallback, successC
     });
 };
 
+// deletes document by its id from given collection
 exports.remove = function (collectionName, id, errorCallback, successCallback) {
     var _id = new mongo.ObjectID(id);
     db.collection(collectionName, function (err, collection) {

@@ -1,20 +1,29 @@
 'use strict';
+/*
+generic service module to perform basic service operations
+*/
 
-var dbHelper = require('./repository');
+// include required internal modules
+var db = require('./repository');
+
+// holds mongo db collection name
 var collectionName = null;
 
+// calls repository to initialize db
 exports.init = function() {
-    dbHelper.connectToDb();  
+    db.connect();  
 };
 
+// set the current collection name of the service instance and returns the same
 exports.GetServiceInstance = function(collection)
 {
     collectionName = collection;    
     return this;
 };
 
+// calls the repository to get all documents from given collection and returns as api response
 exports.findAll = function (req, res) {
-    dbHelper.findAll
+    db.findAll
     (
         collectionName,
         function(err) { res.send(err); }, 
@@ -22,9 +31,10 @@ exports.findAll = function (req, res) {
     );
 };
 
+// calls the repository to get document by its id from given collection and returns as api response
 exports.findById = function (req, res) {
     var id = req.params.id;
-    dbHelper.findById(
+    db.findById(
         collectionName,
         id,
         function(err) { res.send(err); }, 
@@ -32,9 +42,10 @@ exports.findById = function (req, res) {
     )
 };
 
+// calls the repository to add new document to given collection and returns as api response
 exports.add = function (req, res) {
     var article = req.body;
-    dbHelper.add(
+    db.add(
         collectionName,
         article,
         function(err) { res.send(err); }, 
@@ -42,10 +53,11 @@ exports.add = function (req, res) {
     )
 };
 
+// calls the repository to update document by its id from given collection and returns as api response
 exports.update = function (req, res) {
     var id = req.params.id;
     var article = req.body;
-    dbHelper.update(
+    db.update(
         collectionName,
         id,
         article,
@@ -54,9 +66,10 @@ exports.update = function (req, res) {
     )
 };
 
+// calls the repository to delete document by its id from given collection and returns as api response
 exports.remove = function (req, res) {
     var id = req.params.id;
-    dbHelper.remove(
+    db.remove(
         collectionName,
         id,
         function(err) { res.send(err); }, 
