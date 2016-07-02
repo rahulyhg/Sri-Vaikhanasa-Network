@@ -1,0 +1,9 @@
+{
+    "appServer" : {
+        "server" : "localhost",
+        "port" : 3000
+    },
+    "dbServer":{
+        "url": "mongodb://userId:password@localhost:port/dbname"
+    }
+}
