@@ -1,9 +1,9 @@
 {
-    "appServer" : {
-        "server" : "localhost",
-        "port" : 3000
+    "appServer": {
+        "server": "localhost",
+        "port": 8080
     },
-    "dbServer":{
-        "url": "mongodb://userId:password@localhost:port/dbname"
+    "dbServer": {
+        "url": "mongodb://db1.example.net,db2.example.net:2500/?replicaSet=test"
     }
 }
