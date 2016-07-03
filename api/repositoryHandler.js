@@ -11,7 +11,7 @@ module.exports = function repositoryHandler() {
     var db = null;
 
     // connects mongo db with configured url
-    this.connect = function () {
+    this.connect = function (err) {
         if (db == null) {
             mongo.MongoClient.connect(
                 process.env.SVNDB_URL || config.dbServer.url,
@@ -23,80 +23,62 @@ module.exports = function repositoryHandler() {
     };
 
     // get all documents for the given collection
-    this.findAll = function (collectionName, errorCallback, successCallback) {
+    this.findAll = function (err, collectionName, successCallback) {
         db.collection(collectionName, function (err, collection) {
-            handleErrorIfAny(err, errorCallback);
-            collection.find().toArray(function (err, items) {
-                handleErrorIfAny(err, errorCallback);
-                if (successCallback) {
-                    successCallback(items);
+            collection.find().toArray(function (err, result) {
+                if (!err && successCallback) {
+                    successCallback(result);
                 }
             });
         });
     };
 
     // gets document by its id for the given collection
-    this.findById = function (collectionName, id, errorCallback, successCallback) {
+    this.findById = function (err, collectionName, id, successCallback) {
         var _id = new mongo.ObjectID(id);
         db.collection(collectionName, function (err, collection) {
-            handleErrorIfAny(err, errorCallback);
-            collection.findOne({ '_id': _id }, function (err, item) {
-                handleErrorIfAny(err, errorCallback);
-                if (successCallback) {
-                    successCallback(item);;
+            collection.findOne({ '_id': _id }, function (err, result) {
+                if (!err && successCallback) {
+                    successCallback(result);
                 }
             });
         });
     };
 
     // adds new document to given collection
-    this.add = function (collectionName, document, errorCallback, successCallback) {
+    this.add = function (err, collectionName, document, successCallback) {
         db.collection(collectionName, function (err, collection) {
-            handleErrorIfAny(err, errorCallback);
             collection.insertOne(document, { safe: true }, function (err, result) {
-                handleErrorIfAny(err, errorCallback);
-                if (successCallback) {
-                    successCallback(result);;
+                if (!err && successCallback) {
+                    successCallback(result);
                 }
             });
         });
     };
 
     // updates document by its id in given collection
-    this.update = function (collectionName, id, document, errorCallback, successCallback) {
+    this.update = function (err, collectionName, id, document, successCallback) {
         var _id = new mongo.ObjectID(id);
         db.collection(collectionName, function (err, collection) {
-            handleErrorIfAny(err, errorCallback);
             collection.update({ '_id': _id }, document, { safe: true }, function (err, result) {
-                handleErrorIfAny(err, errorCallback);
-                if (successCallback) {
-                    successCallback(result);;
+                if (!err && successCallback) {
+                    successCallback(result);
                 }
             });
         });
     };
 
     // deletes document by its id from given collection
-    this.remove = function (collectionName, id, errorCallback, successCallback) {
+    this.remove = function (err, collectionName, id, errorCallback, successCallback) {
         var _id = new mongo.ObjectID(id);
         db.collection(collectionName, function (err, collection) {
-            handleErrorIfAny(err, errorCallback);
             collection.remove({ '_id': _id }, { safe: true }, function (err, result) {
-                handleErrorIfAny(err, errorCallback);
-                if (successCallback) {
-                    successCallback(result);;
+                if (!err && successCallback) {
+                    successCallback(result);
                 }
             });
         });
     };
-
-    var handleErrorIfAny = function (err, errorCallback) {
-        if (err) {
-            if (errorCallback) {
-                errorCallback(err);
-            }
-        }
-    }
 
     return this;
 }

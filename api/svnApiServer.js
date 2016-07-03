@@ -12,7 +12,6 @@ exports.start = function svnApiServer() {
 
     // include required internal modules
     var routeHandler = require('./routeHandler');
-    var errorHandler = require('./errorHandler');
 
     // create our app
     var app = express();
@@ -23,9 +22,6 @@ exports.start = function svnApiServer() {
 
     // register all routes to app
     routeHandler(app, express);
-
-    // register global error handler
-    app.use(errorHandler);
 
     // Starts app server so that REST services will be exposed
     app.listen(

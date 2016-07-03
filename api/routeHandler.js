@@ -15,9 +15,9 @@ module.exports = function routeHandler(app, express) {
     // create private variables
     var router = express.Router();
     var db = new repository();
-    
+
     // connect to mongo db [As of now we are not using connection pooling. Will see when required...]
-    //db.connect();
+    db.connect();
 
     // basic req interceptor that is applied to all routes
     router.use(reqLogger);
@@ -38,9 +38,12 @@ module.exports = function routeHandler(app, express) {
     router.put('/temples/:id', isAuthenticated, isAuthorized, temples.update);
     router.delete('/temples/:id', isAuthenticated, isAuthorized, temples.remove);
 
+    // register routes to our app
     app.use('/api', router)
 
+    // to return the list of api methods exposed on home page access
     app.get('/', function (req, res) {
+
         var route, routes = [];
         app._router.stack.forEach(function (middleware) {
             if (middleware.route) { // routes registered directly on the app
@@ -52,7 +55,16 @@ module.exports = function routeHandler(app, express) {
                 });
             }
         });
-        res.send(routes);
+
+        var baseUrl = req.protocol + '://' + req.get('host')
+        var content = '<html><body><h4>List of Api Methods</h4><table>';
+        routes.forEach(function (val) {
+            var apiUrl = baseUrl + '/api' + val.path;
+            content = content + '<tr><td>[' + val.stack[0].method.toUpperCase() + ']</td><td><a href="' + apiUrl + '">' + apiUrl + '</a></td></tr>';
+        });
+        content = content + '</table></body></html>';
+
+        res.send(content);
     });
 }
 
