@@ -6,12 +6,12 @@ module.exports = function (app) {
     // Articles collection routes
     app.route('/api/articles')
         .get(articles.list)
-        .post(articles.create);
+        .put(articles.create);
 
     // Single article routes
     app.route('/api/articles/:articleId')
         .get(articles.read)
-        .put(articles.update)
+        .post(articles.update)
         .delete(articles.delete);
 
     // Finish by binding the article middleware

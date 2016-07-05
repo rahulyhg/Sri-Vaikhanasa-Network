@@ -6,21 +6,21 @@ var Article = mongoose.model('Article');
 /*
 * Create article
 */
-exports.create = function (req, res) {
-    var article = new Article(req.body);
-    article.user = req.user;
+exports.create = function (req, res, next) {
+  var article = new Article(req.body);
+  article.user = req.user;
 
-    article.save(function (err, result) {
-        if (err) {
-            return res.status(400).send(err);
-        } else {
-            res.json(result);
-        }
-    });
+  article.save(function (err, result) {
+    if (err) {
+      return next(err);
+    } else {
+      res.json(result);
+    }
+  });
 }
 
 /**
- * Show the current article
+ * Get article details
  */
 exports.read = function (req, res) {
   // convert mongoose document to JSON
@@ -36,7 +36,7 @@ exports.read = function (req, res) {
 /**
  * Update an article
  */
-exports.update = function (req, res) {
+exports.update = function (req, res, next) {
   var article = req.article;
 
   article.title = req.body.title;
@@ -46,38 +46,38 @@ exports.update = function (req, res) {
 
   article.save(function (err, result) {
     if (err) {
-            return res.status(400).send(err);
-        } else {
-            res.json(result);
-        }
+      return next(err);
+    } else {
+      res.json(result);
+    }
   });
 };
 
 /**
  * Delete an article
  */
-exports.delete = function (req, res) {
+exports.delete = function (req, res, next) {
   var article = req.article;
 
   article.remove(function (err, result) {
     if (err) {
-            return res.status(400).send(err);
-        } else {
-            res.json(result);
-        }
+      return next(err);
+    } else {
+      res.json(result);
+    }
   });
 };
 
 /**
- * List of Articles
+ * Get list of Articles
  */
-exports.list = function (req, res) {
+exports.list = function (req, res, next) {
   Article.find().sort('-createdAt').populate('user', 'displayName').exec(function (err, result) {
     if (err) {
-            return res.status(400).send(err);
-        } else {
-            res.json(result);
-        }
+      return next(err);
+    } else {
+      res.json(result);
+    }
   });
 };
 
@@ -103,4 +103,5 @@ exports.articleByID = function (req, res, next, id) {
     req.article = article;
     next();
   });
+
 };

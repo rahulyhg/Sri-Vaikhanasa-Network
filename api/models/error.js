@@ -14,15 +14,11 @@ var ErrorSchema = new Schema(
             type: String,
             trim: true
         },
-        request: {
+        httpMethod: {
             type: String,
             trim: true
         },
-        response: {
-            type: String,
-            trim: true
-        },
-        errorMessage: {
+        error: {
             type: String,
             trim: true
         },
@@ -34,7 +30,7 @@ var ErrorSchema = new Schema(
             type: Schema.ObjectId,
             ref: 'User'
         },
-        clientIp: {
+        clientIP:{
             type: String,
             trim: true
         }
