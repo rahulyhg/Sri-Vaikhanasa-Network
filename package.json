@@ -4,7 +4,7 @@
   "description": "Web Api for SriVaikhanasa.Net",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --reporter spec --recursive"
   },
   "author": "Acharya Raja Sekhar Brundhavanam",
   "license": "MIT",
@@ -14,8 +14,11 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
     "config": "^1.21.0",
     "express": "^4.14.0",
-    "mongoose": "^4.5.3"
+    "mocha": "^2.5.3",
+    "mongoose": "^4.5.3",
+    "request": "^2.73.0"
   }
 }
