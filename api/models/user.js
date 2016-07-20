@@ -5,23 +5,7 @@ var mongoose = require('mongoose'), Schema = mongoose.Schema;
 
 // define schema
 var UserSchema = new Schema(
-    {
-        firstName: {
-            type: String,
-            trim: true,
-            default: '',
-            required: 'Please fill in your first name'
-        },
-        lastName: {
-            type: String,
-            trim: true,
-            default: '',
-            required: 'Please fill in your last name'
-        },
-        displayName: {
-            type: String,
-            trim: true
-        },
+    {        
         username: {
             type: String,
             unique: 'Username already exists',
@@ -29,13 +13,18 @@ var UserSchema = new Schema(
             lowercase: true,
             trim: true
         },
-        updated: {
-            type: Date
+        password: {
+            type: String,
+            required: 'Please fill in a password',
         },
-        created: {
+        modifiedAt: {
             type: Date,
             default: Date.now
-        }        
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now
+        }
     });
 
 // register with mongoose

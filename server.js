@@ -9,6 +9,9 @@ var express = require('express');
 // Create our app
 var app = express();
 
+// Init all app configurations
+require('./api/core/setAppConfig')(app);
+
 // register midlewares for http body parsing
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,7 +27,7 @@ require('./api/core/registerRoutes')(app);
 require('./api/midlewares/globalErrorHandler')(app);
 
 // start db connectivity
-require('./api/core/startDbConnection');
+require('./api/core/startDbConnection')(app);
 
 // start app server
 require('./api/core/startAppServer')(app);

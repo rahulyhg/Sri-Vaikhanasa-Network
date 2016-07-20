@@ -5,5 +5,7 @@
     },
     "dbServer": {
         "url": "mongodb://db1.example.net,db2.example.net:2500/?replicaSet=test"
-    }
+    },
+    "tokenPrivateKey" : "my secret key go's here",
+    "tokenExpiresIn": "5m"
 }
