@@ -12,11 +12,13 @@ module.exports = function (req, res, next) {
         // verifies secret and checks exp
         jwt.verify(token, req.app.get('tokenPrivateKey'), function (err, decoded) {
             if (err) {
-                return res.json({ success: false, message: 'Failed to authenticate token.' });
+                return res.status(403).send({
+                    success: false,
+                    message: 'Failed to authenticate token.'
+                });
             } else {
                 // if everything is good, save to request for use in other routes
                 req.decoded = decoded;
-                console.log('decoded token: ' + decoded);
                 next();
             }
         });

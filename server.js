@@ -31,3 +31,5 @@ require('./api/core/startDbConnection')(app);
 
 // start app server
 require('./api/core/startAppServer')(app);
+
+module.exports = app;

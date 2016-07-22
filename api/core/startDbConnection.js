@@ -17,5 +17,6 @@ module.exports = function (app) {
     // on connect
     db.once('open', function () {
         console.log('Database connection established successfully....');
+        app.emit('dbServerConnected');
     });
 };
