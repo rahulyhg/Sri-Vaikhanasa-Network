@@ -12,8 +12,8 @@ module.exports = function (app) {
     // Single article routes
     app.route('/api/article/:articleId')
         .get(article.read)
-        .post(article.update)
-        .delete(article.delete);
+        .post(isAuthenticated, article.update)
+        .delete(isAuthenticated, article.delete);
 
     // Finish by binding the article middleware
     app.param('articleId', article.articleByID);

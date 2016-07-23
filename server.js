@@ -17,6 +17,9 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// register loggers
+require('./api/midlewares/winstonLogger')(app);
+
 // register models
 require('./api/core/registerModels');
 

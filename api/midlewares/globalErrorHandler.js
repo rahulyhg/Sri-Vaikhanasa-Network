@@ -2,10 +2,21 @@
 
 var mongoose = require('mongoose');
 var Error = mongoose.model('Error');
+var winston = require('winston');
+var expressWinston = require('express-winston');
 
 module.exports = function (app) {
+
+    app.use(expressWinston.errorLogger({
+        transports: [
+            new (winston.transports.File)({
+                filename: './log/api.log',
+                colorize: true
+            })
+        ]
+    }));
+
     app.use(function globalErrorHandler(err, req, res, next) {
-        console.log('inside global error handler');
         if (err) {
             var error = new Error({
                 requestUrl: req.url,
@@ -15,10 +26,7 @@ module.exports = function (app) {
                 user: req.user,
                 clientIP: req.ip
             });
-            error.save(function (err) {
-                console.log('Error while saving error : ' + err);
-                console.log('********************************************');
-            });
+            error.save();
             return res.status(err.status || 500).json({
                 message: getErrorMessage(err)
             });
