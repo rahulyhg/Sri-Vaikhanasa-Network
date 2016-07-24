@@ -6,13 +6,13 @@ var supertest = require('supertest');
 var app = null;
 
 before(function (done) {
+    app = require('../server');
     app.on("appServerStarted", function () {
         app.on("dbServerConnected", function () {
             console.log('I am up and running...');
             done();
         });
-    });
-     app = require('../server');
+    });    
 });
 
 var api = supertest(app);
