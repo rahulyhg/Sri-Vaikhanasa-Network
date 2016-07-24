@@ -6,7 +6,7 @@ before(function (done) {
     app = require('../server');
     app.on("appServerStarted", function () {
         app.on("dbServerConnected", function () {
-            console.log('I am up and running...');
+            console.log('I am up and running @ ' + app.webServer);
             done();
         });
     });    
