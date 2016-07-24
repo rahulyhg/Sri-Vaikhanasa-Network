@@ -1,6 +1,4 @@
-https://travis-ci.org/acharyarajasekhar/Sri-Vaikhanasa-Network.svg?branch=master
-
-[![Coverage Status](https://coveralls.io/repos/acharyarajasekhar/Sri-Vaikhanasa-Network/badge.svg?branch=master)](https://coveralls.io/r/acharyarajasekhar/Sri-Vaikhanasa-Network?branch=master)
+[![Build Status](https://travis-ci.org/acharyarajasekhar/Sri-Vaikhanasa-Network.svg?branch=master)](https://travis-ci.org/acharyarajasekhar/Sri-Vaikhanasa-Network) [![Coverage Status](https://coveralls.io/repos/acharyarajasekhar/Sri-Vaikhanasa-Network/badge.svg?branch=master)](https://coveralls.io/r/acharyarajasekhar/Sri-Vaikhanasa-Network?branch=master)
 
 Sri Vaikhanasa Network
 
