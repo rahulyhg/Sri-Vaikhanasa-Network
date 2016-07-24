@@ -4,6 +4,7 @@ module.exports = function (app) {
 
     var api = null;
     var expect = require("chai").expect;
+    var supertest = require('supertest'); 
 
     before(function (done) {
         api = supertest(app);
