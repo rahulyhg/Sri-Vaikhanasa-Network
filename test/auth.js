@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (api, expect) {
     describe("Authentication API Test", function () {
 

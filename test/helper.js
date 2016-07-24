@@ -1,3 +1,5 @@
+'use strict';
+
 exports.login = function (api, expect, callback) {
     api
         .post('/api/user/authenticate')

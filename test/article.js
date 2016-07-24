@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (api, expect) {
 
     describe("Articles API Test", function () {
