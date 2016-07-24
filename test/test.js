@@ -3,8 +3,8 @@
 var expect = require("chai").expect;
 var supertest = require('supertest');
 
-var app = require('../server');
-var api = supertest(app);
+var app = null;
+
 before(function (done) {
     app.on("appServerStarted", function () {
         app.on("dbServerConnected", function () {
@@ -12,8 +12,10 @@ before(function (done) {
             done();
         });
     });
+     app = require('../server');
 });
 
+var api = supertest(app);
 // var api = supertest('http://localhost:3000');
 
 require('./auth')(api, expect);
