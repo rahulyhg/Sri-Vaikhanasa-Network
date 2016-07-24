@@ -6,7 +6,7 @@ module.exports = function (app) {
         app.get('port'),
         app.get('host'),
         function () {
-            console.log('Web server started and listening at ' + server.address());
+            console.log('Web server started and listening at ' + server.address().address + ":" + server.address().port);
             app.emit('appServerStarted');
         });
 }
