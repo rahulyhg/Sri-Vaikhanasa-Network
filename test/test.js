@@ -1,8 +1,5 @@
 'use strict';
 
-var expect = require("chai").expect;
-var supertest = require('supertest');
-
 var app = null;
 
 before(function (done) {
@@ -15,8 +12,7 @@ before(function (done) {
     });    
 });
 
-var api = supertest(app);
 // var api = supertest('http://localhost:3000');
 
-require('./auth')(api, expect);
+require('./auth')(app);
 // require('./article')(api, expect);

@@ -1,6 +1,15 @@
 'use strict';
 
-module.exports = function (api, expect) {
+module.exports = function (app) {
+
+    var api = null;
+    var expect = require("chai").expect;
+
+    before(function (done) {
+        api = supertest(app);
+        done();
+    });
+
     describe("Authentication API Test", function () {
 
         it("Invalid username and password", function (done) {
