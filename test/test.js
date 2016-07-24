@@ -15,5 +15,5 @@ before(function (done) {
 
 // var api = supertest('http://localhost:3000');
 
-// require('./auth')(api, expect);
+require('./auth')(api, expect);
 // require('./article')(api, expect);
