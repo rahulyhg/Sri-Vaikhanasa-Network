@@ -31,8 +31,8 @@ module.exports = function (api, expect) {
                 });
         });
 
-        it("Valid username and valid password", function (done) {
-            require('./helper').login(api, expect, function (token) { done(); });
-        });
+        // it("Valid username and valid password", function (done) {
+        //     require('./helper').login(api, expect, function (token) { done(); });
+        // });
     });
 };
