@@ -10,7 +10,7 @@ module.exports = function (app) {
     app.use(expressWinston.errorLogger({
         transports: [
             new (winston.transports.File)({
-                filename: './log/api.log',
+                filename: './api.log',
                 colorize: true
             })
         ]

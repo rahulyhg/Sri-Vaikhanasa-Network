@@ -1,15 +1,6 @@
 'use strict';
 
-module.exports = function (app) {
-
-    var api = null;
-    var expect = require("chai").expect;
-    var supertest = require('supertest'); 
-
-    before(function (done) {
-        api = supertest(app);
-        done();
-    });
+module.exports = function (api, expect) {
 
     describe("Authentication API Test", function () {
 
@@ -41,8 +32,8 @@ module.exports = function (app) {
                 });
         });
 
-        // it("Valid username and valid password", function (done) {
-        //     require('./helper').login(api, expect, function (token) { done(); });
-        // });
+        it("Valid username and valid password", function (done) {
+            require('./helper').login(api, expect, function (token) { done(); });
+        });
     });
 };

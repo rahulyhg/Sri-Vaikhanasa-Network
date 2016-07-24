@@ -4,7 +4,7 @@ var winston = require('winston');
 var expressWinston = require('express-winston');
 
 module.exports = function (app) {
-    var fileName = "./log/api.log";
+    var fileName = "./api.log";
 
     // winston.add(winston.transports.File, { filename: fileName });
     // winston.remove(winston.transports.Console);

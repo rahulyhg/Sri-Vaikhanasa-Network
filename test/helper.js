@@ -16,4 +16,4 @@ exports.login = function (api, expect, callback) {
                 callback(response.body.token);
             }
         });
-}
+};
