@@ -16,7 +16,7 @@ module.exports = function (app) {
     var db = mongoose.connection;
 
     // on error through the error
-    db.on("error", function () { winston.error("Database connection error:") });
+    db.on("error", function () { winston.error("Database connection error:"); });
     // on connect
     db.once("open", function () {
         winston.info("Database connection established successfully....");

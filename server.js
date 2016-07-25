@@ -26,6 +26,9 @@ require("./api/core/registerModels");
 // register api routes
 require("./api/core/registerRoutes")(app);
 
+// register google oauth module
+require("./api/midlewares/oauth/google/login")(app);
+
 // registering error handlers
 require("./api/midlewares/globalErrorHandler")(app);
 

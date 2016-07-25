@@ -1,5 +1,8 @@
 "use strict";
 
+// get helper module
+var helper = require("./helper");
+
 module.exports = function (api, expect) {
 
     describe("Authentication API Test", function () {
@@ -33,7 +36,7 @@ module.exports = function (api, expect) {
         });
 
         it("Valid username and valid password", function (done) {
-            require("./helper").login(api, expect, function (token) { done(); });
+            helper.login(api, expect, function (token) { done(); });
         });
     });
 };

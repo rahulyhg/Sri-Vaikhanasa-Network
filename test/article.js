@@ -1,5 +1,8 @@
 "use strict";
 
+// get helper module
+var helper = require("./helper");
+
 module.exports = function (api, expect) {
 
     describe("Articles API Test", function () {
@@ -8,7 +11,7 @@ module.exports = function (api, expect) {
         var authToken = null;
 
         before(function (done) {
-            require("./helper").login(api, expect, function (token) { authToken = token; done(); });
+            helper.login(api, expect, function (token) { authToken = token; done(); });
         });
 
         it("Create without token", function (done) {
