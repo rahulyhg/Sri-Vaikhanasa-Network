@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
 exports.login = function (api, expect, callback) {
     api
-        .post('/api/user/authenticate')
+        .post("/api/user/authenticate")
         .send({
-            "username": 'acharya.r',
-            "password": 'password123'
+            "username": "acharya.r",
+            "password": "password123"
         })
         .end(function (error, response) {
             expect(error).to.be.null;

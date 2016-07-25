@@ -1,7 +1,15 @@
-'use strict';
+"use strict";
 
-var mongoose = require('mongoose');
-var Article = mongoose.model('Article');
+var mongoose = require("mongoose");
+var Article = mongoose.model("Article");
+
+var responde = function (err, data, req, res, next) {
+  if (err) {
+    return next(err);
+  } else {
+    res.json(data);
+  }
+};
 
 /*
 * Create article
@@ -9,15 +17,8 @@ var Article = mongoose.model('Article');
 exports.create = function (req, res, next) {
   var article = new Article(req.body);
   article.user = req.user;
-
-  article.save(function (err, result) {
-    if (err) {
-      return next(err);
-    } else {
-      res.json(result);
-    }
-  });
-}
+  article.save(function (err, data) { responde(err, data, req, res, next); });
+};
 
 /**
  * Get article details
@@ -38,19 +39,11 @@ exports.read = function (req, res) {
  */
 exports.update = function (req, res, next) {
   var article = req.article;
-
   article.title = req.body.title;
   article.content = req.body.content;
   article.status = req.body.status;
   article.modifiedAt = new Date();
-
-  article.save(function (err, result) {
-    if (err) {
-      return next(err);
-    } else {
-      res.json(result);
-    }
-  });
+  article.save(function (err, data) { responde(err, data, req, res, next); });
 };
 
 /**
@@ -58,27 +51,15 @@ exports.update = function (req, res, next) {
  */
 exports.delete = function (req, res, next) {
   var article = req.article;
-
-  article.remove(function (err, result) {
-    if (err) {
-      return next(err);
-    } else {
-      res.json(result);
-    }
-  });
+  article.remove(function (err, data) { responde(err, data, req, res, next); });
 };
 
 /**
  * Get list of Articles
  */
 exports.list = function (req, res, next) {
-  Article.find().sort('-createdAt').populate('user', 'displayName').exec(function (err, result) {
-    if (err) {
-      return next(err);
-    } else {
-      res.json(result);
-    }
-  });
+  Article.find().sort("-createdAt").populate("user", "displayName")
+    .exec(function (err, data) { responde(err, data, req, res, next); });
 };
 
 /**
@@ -88,16 +69,16 @@ exports.articleByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
-      message: 'Article is invalid'
+      message: "Article is invalid"
     });
   }
 
-  Article.findById(id).populate('user', 'username').exec(function (err, article) {
+  Article.findById(id).populate("user", "username").exec(function (err, article) {
     if (err) {
       return next(err);
     } else if (!article) {
       return res.status(404).send({
-        message: 'No article with that identifier has been found'
+        message: "No article with that identifier has been found"
       });
     }
     req.article = article;

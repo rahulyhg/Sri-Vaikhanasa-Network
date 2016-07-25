@@ -1,21 +1,21 @@
-'use strinct';
+"use strinct";
 
 // module dependencies
-var mongoose = require('mongoose'), Schema = mongoose.Schema;
+var mongoose = require("mongoose"), Schema = mongoose.Schema;
 
 // define schema
 var UserSchema = new Schema(
     {        
         username: {
             type: String,
-            unique: 'Username already exists',
-            required: 'Please fill in a username',
+            unique: "Username already exists",
+            required: "Please fill in a username",
             lowercase: true,
             trim: true
         },
         password: {
             type: String,
-            required: 'Please fill in a password',
+            required: "Please fill in a password"
         },
         modifiedAt: {
             type: Date,
@@ -28,4 +28,4 @@ var UserSchema = new Schema(
     });
 
 // register with mongoose
-mongoose.model('User', UserSchema);
+mongoose.model("User", UserSchema);

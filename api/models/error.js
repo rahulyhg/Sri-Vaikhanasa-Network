@@ -1,7 +1,7 @@
-'use strinct';
+"use strinct";
 
 // module dependencies
-var mongoose = require('mongoose'), Schema = mongoose.Schema;
+var mongoose = require("mongoose"), Schema = mongoose.Schema;
 
 // define schema
 var ErrorSchema = new Schema(
@@ -28,7 +28,7 @@ var ErrorSchema = new Schema(
         },
         user: {
             type: Schema.ObjectId,
-            ref: 'User'
+            ref: "User"
         },
         clientIP:{
             type: String,
@@ -37,4 +37,4 @@ var ErrorSchema = new Schema(
     });
 
 // register with mongoose
-mongoose.model('Error', ErrorSchema);
+mongoose.model("Error", ErrorSchema);

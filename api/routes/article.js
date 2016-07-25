@@ -1,20 +1,20 @@
-'use strict';
+"use strict";
 
-var article = require('../controllers/article');
-var isAuthenticated = require('../midlewares/isAuthenticatedUser');
+var article = require("../controllers/article");
+var isAuthenticated = require("../midlewares/isAuthenticatedUser");
 
 module.exports = function (app) {
     // Articles collection routes
-    app.route('/api/article')
+    app.route("/api/article")
         .get(article.list)
         .put(isAuthenticated, article.create);
 
     // Single article routes
-    app.route('/api/article/:articleId')
+    app.route("/api/article/:articleId")
         .get(article.read)
         .post(isAuthenticated, article.update)
         .delete(isAuthenticated, article.delete);
 
     // Finish by binding the article middleware
-    app.param('articleId', article.articleByID);
-}
+    app.param("articleId", article.articleByID);
+};

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 module.exports = function (api, expect) {
 
@@ -6,10 +6,10 @@ module.exports = function (api, expect) {
 
         it("Invalid username and password", function (done) {
             api
-                .post('/api/user/authenticate')
+                .post("/api/user/authenticate")
                 .send({
-                    "username": 'invalid',
-                    "password": 'invalid'
+                    "username": "invalid",
+                    "password": "invalid"
                 })
                 .end(function (error, response) {
                     expect(error).to.be.null;
@@ -20,10 +20,10 @@ module.exports = function (api, expect) {
 
         it("Valid username and invalid pssword", function (done) {
             api
-                .post('/api/user/authenticate')
+                .post("/api/user/authenticate")
                 .send({
-                    "username": 'acharya.r',
-                    "password": 'invalid'
+                    "username": "acharya.r",
+                    "password": "invalid"
                 })
                 .end(function (error, response) {
                     expect(error).to.be.null;
@@ -33,7 +33,7 @@ module.exports = function (api, expect) {
         });
 
         it("Valid username and valid password", function (done) {
-            require('./helper').login(api, expect, function (token) { done(); });
+            require("./helper").login(api, expect, function (token) { done(); });
         });
     });
 };

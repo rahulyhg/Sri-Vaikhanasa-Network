@@ -1,25 +1,25 @@
-'use strict';
+"use strict";
 
-var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+var jwt = require("jsonwebtoken"); // used to create, sign, and verify tokens
 
 module.exports = function (req, res, next) {
     // check header or url parameters or post parameters for token
-    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    var token = req.body.token || req.query.token || req.headers["x-access-token"];
 
     // decode token
     if (token) {
 
         // verifies secret and checks exp
-        jwt.verify(token, req.app.get('tokenPrivateKey'), function (err, decoded) {
+        jwt.verify(token, req.app.get("tokenPrivateKey"), function (err, decoded) {
             if (err) {
                 return res.status(401).send({
                     success: false,
-                    message: 'Failed to authenticate token.'
+                    message: "Failed to authenticate token."
                 });
             } else {
                 // if everything is good, save to request for use in other routes
                 req.decoded = decoded;
-                next();
+                return next();
             }
         });
 
@@ -29,9 +29,9 @@ module.exports = function (req, res, next) {
         // return an error
         return res.status(401).send({
             success: false,
-            message: 'No token provided.'
+            message: "No token provided."
         });
 
     }
 
-}
+};

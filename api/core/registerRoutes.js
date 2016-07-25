@@ -1,7 +1,10 @@
-'use strinct';
+"use strinct";
+
+var articleApiRoutes = require("../routes/article");
+var userApiRoutes = require("../routes/user");
 
 module.exports = function (app) {
     // registering all routing modules
-    require('../routes/article')(app);
-    require('../routes/user')(app);
-}
+    articleApiRoutes(app);
+    userApiRoutes(app);
+};
