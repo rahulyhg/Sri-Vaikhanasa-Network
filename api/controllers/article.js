@@ -3,13 +3,6 @@
 var mongoose = require("mongoose");
 var Article = mongoose.model("Article");
 
-var responde = function (err, data, req, res, next) {
-  if (err) {
-    return next(err);
-  } else {
-    res.json(data);
-  }
-};
 var handleBadRequest = function (res, id) {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res.status(400).send("Invalid ID");
@@ -116,7 +109,7 @@ exports.articleByID = function (req, res, next, id) {
       .populate("user", "username")
       .exec()
       .then(handleEntityNotFound(res))
-      .then((entity) => { if (entity) { req.article = entity; next(); } }) // Setting the current article context in req object
+      .then(function (entity) { if (entity) { req.article = entity; return next(); } }) // Setting the article in current req context
       .catch(handleError(next));
   }
 };
