@@ -4,6 +4,9 @@
 var passport = require("passport");
 var GoogleStrategy = require("passport-google-oauth2").Strategy;
 
+// winston logger
+var winston = require("winston");
+
 module.exports = function (app) {
     passport.use(new GoogleStrategy({
         clientID: "clientID",
@@ -12,7 +15,7 @@ module.exports = function (app) {
         passReqToCallback: true
     },
         function (request, accessToken, refreshToken, profile, done) {
-            console.log(profile); // TODO: Need to implement logic to persist the user profile
+            winston.info(profile); // TODO: Need to implement logic to persist the user profile
             done();
         }
     ));

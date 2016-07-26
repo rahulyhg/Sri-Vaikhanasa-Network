@@ -10,6 +10,36 @@ var responde = function (err, data, req, res, next) {
     res.json(data);
   }
 };
+var handleBadRequest = function (res, id) {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res.status(400).send("Invalid ID");
+    return false;
+  }
+  return true;
+};
+var handleEntityNotFound = function (res) {
+  return function (result) {
+    if (!result) {
+      res.status(404).send("Resource not found...");
+    }
+    return result;
+  };
+};
+var responseWithResult = function (res, statusCode) {
+  return function (result) {
+    if (result) {
+      statusCode = statusCode || 200;
+      res.status(statusCode).json(result);
+    }
+  };
+};
+var handleError = function (next) {
+  return function (error) {
+    if (error) {
+      return next(error);
+    }
+  };
+};
 
 /*
 * Create article
@@ -17,7 +47,10 @@ var responde = function (err, data, req, res, next) {
 exports.create = function (req, res, next) {
   var article = new Article(req.body);
   article.user = req.user;
-  article.save(function (err, data) { responde(err, data, req, res, next); });
+  article
+    .save()
+    .then(responseWithResult(res, 201))
+    .catch(handleError(next));
 };
 
 /**
@@ -43,7 +76,10 @@ exports.update = function (req, res, next) {
   article.content = req.body.content;
   article.status = req.body.status;
   article.modifiedAt = new Date();
-  article.save(function (err, data) { responde(err, data, req, res, next); });
+  article
+    .save()
+    .then(responseWithResult(res))
+    .catch(handleError(next));
 };
 
 /**
@@ -51,38 +87,36 @@ exports.update = function (req, res, next) {
  */
 exports.delete = function (req, res, next) {
   var article = req.article;
-  article.remove(function (err, data) { responde(err, data, req, res, next); });
+  article
+    .remove()
+    .then(responseWithResult(res))
+    .catch(handleError(next));
 };
 
 /**
  * Get list of Articles
  */
 exports.list = function (req, res, next) {
-  Article.find().sort("-createdAt").populate("user", "displayName")
-    .exec(function (err, data) { responde(err, data, req, res, next); });
+  Article
+    .find()
+    .sort("-createdAt")
+    .populate("user", "displayName")
+    .exec()
+    .then(responseWithResult(res))
+    .catch(handleError(next));
 };
 
 /**
  * Article middleware
  */
 exports.articleByID = function (req, res, next, id) {
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).send({
-      message: "Article is invalid"
-    });
+  if (handleBadRequest(res, id)) {
+    Article
+      .findById(id)
+      .populate("user", "username")
+      .exec()
+      .then(handleEntityNotFound(res))
+      .then((entity) => { if (entity) { req.article = entity; next(); } }) // Setting the current article context in req object
+      .catch(handleError(next));
   }
-
-  Article.findById(id).populate("user", "username").exec(function (err, article) {
-    if (err) {
-      return next(err);
-    } else if (!article) {
-      return res.status(404).send({
-        message: "No article with that identifier has been found"
-      });
-    }
-    req.article = article;
-    next();
-  });
-
 };

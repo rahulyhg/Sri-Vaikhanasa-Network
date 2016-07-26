@@ -53,7 +53,7 @@ module.exports = function (api, expect) {
                 })
                 .set("x-access-token", authToken)
                 .end(function (error, response) {
-                    expect(response.statusCode).to.equal(200);
+                    expect(response.statusCode).to.equal(201);
                     id = response.body._id;
                     done(error);
                 });

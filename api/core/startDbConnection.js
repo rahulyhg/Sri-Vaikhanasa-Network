@@ -5,7 +5,9 @@ var config = require("config");
 var mongoose = require("mongoose");
 
 // making mongoose to use bluebird promises library
-// mongoose.Promise = require("bluebird");
+var Promise = require("bluebird");
+mongoose.Promise = Promise;
+Promise.promisifyAll(mongoose);
 
 // winston logger
 var winston = require("winston");
