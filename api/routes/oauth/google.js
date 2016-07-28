@@ -15,8 +15,8 @@ module.exports = function(app) {
 
     app.get("/oauth2callback",
         passport.authenticate("google", {
-            successRedirect: '/auth/google/success',
-            failureRedirect: '/auth/google/failure'
+            successRedirect: "/auth/google/success",
+            failureRedirect: "/auth/google/failure"
         })
     );
 
