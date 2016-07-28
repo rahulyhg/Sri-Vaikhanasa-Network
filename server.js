@@ -14,7 +14,9 @@ require("./api/core/setAppConfig")(app);
 
 // register midlewares for http body parsing
 var bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 
 // register loggers
@@ -22,6 +24,9 @@ require("./api/midlewares/winstonLogger")(app);
 
 // register models
 require("./api/core/registerModels");
+
+// initialize session handling modules
+require("./api/core/initAppSessionModules")(app);
 
 // register api routes
 require("./api/core/registerRoutes")(app);

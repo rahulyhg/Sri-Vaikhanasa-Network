@@ -3,16 +3,32 @@
 
 var passport = require("passport");
 
-module.exports = function (app) {
-    app.get("/auth/google", passport.authenticate("google",
-        {
+module.exports = function(app) {
+    app.get("/auth/google",
+        passport.authenticate("google", {
             scope: ["https://www.googleapis.com/auth/userinfo.profile",
-                "https://www.googleapis.com/auth/userinfo.email"]
+                "https://www.googleapis.com/auth/userinfo.email"
+            ]
         }),
-        function (req, res) { } // this never gets called
+        function(req, res) {} // this never gets called
     );
 
-    app.get("/oauth2callback", passport.authenticate("google",
-        { successRedirect: "/api/article", failureRedirect: "/api/article" }
-    ));
+    app.get("/oauth2callback",
+        passport.authenticate("google", {
+            successRedirect: '/auth/google/success',
+            failureRedirect: '/auth/google/failure'
+        })
+    );
+
+    app.get("/auth/google/success",
+        function(req, res) {
+            res.send("Success");
+        }
+    );
+
+    app.get("/auth/google/failure",
+        function(req, res, next) {
+            next("Google authentication failed");
+        }
+    );
 };
