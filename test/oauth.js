@@ -48,15 +48,15 @@ module.exports = function(api, expect) {
                 });
         });
 
-        // it("is Authenticated with Google", function(done) {
-        //     api
-        //         .get("/api/user/isAuthenticated")
-        //         .end(function(error, response) {
-        //             expect(error).to.be.a.null;
-        //             expect(response.statusCode).to.be.equal(200);
-        //             done(error);
-        //         });
-        // });
+        it("is Authenticated with Google", function(done) {
+            api
+                .get("/api/user/isAuthenticated")
+                .end(function(error, response) {
+                    expect(error).to.be.a.null;
+                    console.log(response);
+                    done(error);
+                });
+        });
     });
 
 };

@@ -6,6 +6,7 @@ var passport = require("passport");
 module.exports = function(app) {
     app.get("/auth/google",
         passport.authenticate("google", {
+            session: false,
             scope: ["https://www.googleapis.com/auth/userinfo.profile",
                 "https://www.googleapis.com/auth/userinfo.email"
             ]
@@ -15,6 +16,7 @@ module.exports = function(app) {
 
     app.get("/oauth2callback",
         passport.authenticate("google", {
+            session: false,
             successRedirect: "/auth/google/success",
             failureRedirect: "/auth/google/failure"
         })

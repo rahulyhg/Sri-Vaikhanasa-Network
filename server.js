@@ -31,6 +31,9 @@ require("./api/core/initAppSessionModules")(app);
 // register api routes
 require("./api/core/registerRoutes")(app);
 
+// register bearer token auth module
+require("./api/midlewares/oauth/bearer")(app);
+
 // register google oauth module
 require("./api/midlewares/oauth/google/login")(app);
 

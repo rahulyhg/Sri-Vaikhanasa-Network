@@ -1,8 +1,6 @@
 "use strict";
 
-module.exports = function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    return res.redirect("/auth/google");
-};
+// Module dependencies
+var passport = require("passport");
+
+module.exports = passport.authenticate('bearer', { session: false });

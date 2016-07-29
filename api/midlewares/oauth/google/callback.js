@@ -8,7 +8,7 @@ var ExternalUser = mongoose.model("ExternalUser");
 var winston = require("winston");
 
 // helper Function
-var createOrUpdateUser = function(user, accessToken, profile, done) {
+var persistUser = function(user, accessToken, profile, done) {
     if (!user) {
         //No user was found... so create a new user with values from Google (all the profile. stuff)
         user = new ExternalUser();
@@ -37,7 +37,7 @@ module.exports = function(request, accessToken, refreshToken, profile, done) {
         })
         .exec()
         .then(function(user) {
-            createOrUpdateUser(user, accessToken, profile, done);
+            persistUser(user, accessToken, profile, done);
         })
         .catch(function(err) {
             return done(err);
