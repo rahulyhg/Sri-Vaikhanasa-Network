@@ -18,6 +18,7 @@
     "bluebird": "2.10.2",
     "body-parser": "1.15.2",
     "chai": "3.5.0",
+    "coalescy": "^1.0.0",
     "cobbler": "0.0.6",
     "config": "1.21.0",
     "coveralls": "2.11.11",

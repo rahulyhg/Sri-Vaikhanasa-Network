@@ -2,6 +2,7 @@
 
 // Module dependencies
 var config = require("config");
+var coalesce = require('coalescy');
 
 module.exports = function(app) {
     app.set("host", coalesce(process.env.OPENSHIFT_NODEJS_IP, process.env.IP, config.appServer.host));
@@ -13,16 +14,3 @@ module.exports = function(app) {
     app.set("googleOAuthClientSecret", process.env.SVN_GOOGLE_CLIENTSECRET);
     app.set("googleOAuthCallbackUrl", process.env.SVN_GOOGLE_CALLBACK_URL);
 };
-
-function coalesce() {
-    var i, arg;
-
-    for (i = 0; i < arguments.length; i++) {
-        arg = arguments[i];
-        if (arg !== null && arg !== undefined &&
-            (typeof arg !== 'number' || arg.toString() !== 'NaN')) {
-            return arg;
-        }
-    }
-    return null;
-}
