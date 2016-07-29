@@ -30,3 +30,6 @@ var ExternalUserSchema = new Schema({
         default: Date.now
     }
 });
+
+// register with mongoose
+mongoose.model("ExternalUser", ExternalUserSchema);
