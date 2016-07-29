@@ -20,6 +20,9 @@ var ExternalUserSchema = new Schema({
         required: "Please fill in a username",
         trim: true
     },
+    token: {
+        type: String
+    },
     profile: Object,
     modifiedAt: {
         type: Date,

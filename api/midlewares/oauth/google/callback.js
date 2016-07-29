@@ -15,7 +15,7 @@ var persistUser = function(user, accessToken, profile, done) {
     }
     user.providerId = profile.id;
     user.provider = profile.provider;
-    user.token = accessToken;
+    user.token = "12345"; // TODO: some problem with accessToken. Needs to resolve...
     user.email = profile.email;
     user.name = profile.displayName;
     user.profile = profile;

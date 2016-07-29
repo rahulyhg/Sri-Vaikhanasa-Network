@@ -8,5 +8,7 @@ module.exports = function(app) {
         .post(user.authenticate);
 
     app.route("/api/user/isAuthenticated")
-        .get(ensureAuthenticated);
+        .get(ensureAuthenticated, function(req, res, next) {
+            res.send(req.isAuthenticated());
+        });
 };

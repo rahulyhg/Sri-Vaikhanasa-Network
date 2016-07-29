@@ -11,7 +11,7 @@ module.exports = function(app) {
         new BearerStrategy(
             function(token, done) {
                 ExternalUser.findOne({
-                        token: token
+                        token
                     })
                     .exec()
                     .then(function(user) {
