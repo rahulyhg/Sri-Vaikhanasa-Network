@@ -25,10 +25,10 @@ var createOrUpdateUser = function(user, accessToken, profile, done) {
             return done(null, usr);
         })
         .catch(function(err) {
-            winston.info('error saving user: ' + err);
+            winston.info("error saving user: " + err);
             return done(err);
         });
-}
+};
 
 module.exports = function(request, accessToken, refreshToken, profile, done) {
     ExternalUser

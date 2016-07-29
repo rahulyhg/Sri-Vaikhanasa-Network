@@ -2,7 +2,7 @@
 
 // Module dependencies
 var config = require("config");
-var coalesce = require('coalescy');
+var coalesce = require("coalescy");
 
 module.exports = function(app) {
     app.set("host", coalesce(process.env.OPENSHIFT_NODEJS_IP, process.env.IP, config.appServer.host));
