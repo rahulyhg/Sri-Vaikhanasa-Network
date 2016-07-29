@@ -4,7 +4,5 @@ Sri Vaikhanasa Network
 
 A platform that brings all Vaikhanasa's across the world together to share and celebrate...
 
-https://acharyarajasekhar.github.io/Sri-Vaikhanasa-Network/
-
 [[Project Site]](https://acharyarajasekhar.github.io/Sri-Vaikhanasa-Network/)
 
