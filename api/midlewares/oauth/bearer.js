@@ -9,9 +9,9 @@ var BearerStrategy = require('passport-http-bearer').Strategy;
 module.exports = function(app) {
     passport.use(
         new BearerStrategy(
-            function(token, done) {
+            function(accessToken, done) {
                 ExternalUser.findOne({
-                        token
+                        token: accessToken
                     })
                     .exec()
                     .then(function(user) {
