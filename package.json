@@ -24,7 +24,7 @@
     "mongoose": "4.5.3",
     "passport": "0.3.2",
     "passport-google-oauth2": "0.1.6",
-    "passport-google-token": "^0.1.2",
+    "passport-http-bearer": "1.0.1",
     "winston": "2.2.0",
     "coalescy": "1.0.0"
   },
