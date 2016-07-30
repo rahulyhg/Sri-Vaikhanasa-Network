@@ -16,7 +16,7 @@ module.exports = function(api, expect) {
             "provider": "google",
             "id": "111111111111111111111",
             "displayName": "Abc",
-            "email": "abc@abc.com"
+            "email": "test@svn.net"
         };
 
         it("Mocked google oauth login", function(done) {
@@ -57,7 +57,7 @@ module.exports = function(api, expect) {
                     done(error);
                 });
         });
-        
+
         it("is Authenticated with wrong access token", function(done) {
             api
                 .get("/api/user/isAuthenticated?access_token=11111")
@@ -67,10 +67,21 @@ module.exports = function(api, expect) {
                     done(error);
                 });
         });
-        
-        it("is Authenticated with access token", function(done) {
+
+        it("is Authenticated with access token in query string", function(done) {
             api
                 .get("/api/user/isAuthenticated?access_token=12345")
+                .end(function(error, response) {
+                    expect(error).to.be.a.null;
+                    expect(response.statusCode).to.be.equal(200);
+                    done(error);
+                });
+        });
+        
+        it("is Authenticated with access token in request header", function(done) {
+            api
+                .get("/api/user/isAuthenticated")
+                .set("Authorization", "Bearer 12345")
                 .end(function(error, response) {
                     expect(error).to.be.a.null;
                     expect(response.statusCode).to.be.equal(200);

@@ -14,7 +14,6 @@ before(function(done) {
 describe("SVN API Test", function() {
 
     require("./oauth")(api, expect);
-    require("./auth")(api, expect);
     require("./article")(api, expect);
 
 });

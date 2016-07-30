@@ -1,18 +1,10 @@
 "use strict";
 
-// get helper module
-var helper = require("./helper");
-
 module.exports = function (api, expect) {
 
     describe("Articles API Test", function () {
 
         var id = null;
-        var authToken = null;
-
-        before(function (done) {
-            helper.login(api, expect, function (token) { authToken = token; done(); });
-        });
 
         it("Create without token", function (done) {
             api
@@ -36,7 +28,7 @@ module.exports = function (api, expect) {
                     "content": "TestContent",
                     "title": "TestTitle"
                 })
-                .set("x-access-token", "invalid token")
+                .set("Authorization", "Bearer 11111")
                 .end(function (error, response) {
                     expect(response.statusCode).to.equal(401);
                     done(error);
@@ -51,7 +43,7 @@ module.exports = function (api, expect) {
                     "content": "TestContent",
                     "title": "TestTitle"
                 })
-                .set("x-access-token", authToken)
+                .set("Authorization", "Bearer 12345")
                 .end(function (error, response) {
                     expect(response.statusCode).to.equal(201);
                     id = response.body._id;
@@ -79,7 +71,7 @@ module.exports = function (api, expect) {
                     "content": "TestContent",
                     "title": "TestTitle"
                 })
-                .set("x-access-token", authToken)
+                .set("Authorization", "Bearer 12345")
                 .end(function (error, response) {
                     expect(response.statusCode).to.equal(500);
                     done(error);
@@ -95,7 +87,7 @@ module.exports = function (api, expect) {
                     "content": "UpdatedTestContent",
                     "title": "UpdatedTestTitle"
                 })
-                .set("x-access-token", authToken)
+                .set("Authorization", "Bearer 12345")
                 .end(function (error, response) {
                     expect(response.statusCode).to.equal(200);
                     done(error);
@@ -119,7 +111,7 @@ module.exports = function (api, expect) {
                 .send({
                     "_id": id
                 })
-                .set("x-access-token", authToken)
+                .set("Authorization", "Bearer 12345")
                 .end(function (error, response) {
                     expect(response.statusCode).to.equal(500);
                     done(error);
@@ -129,7 +121,7 @@ module.exports = function (api, expect) {
         it("Delete article", function (done) {
             api
                 .delete("/api/article/" + id)
-                .set("x-access-token", authToken)
+                .set("Authorization", "Bearer 12345")
                 .end(function (error, response) {
                     expect(response.statusCode).to.equal(200);
                     done(error);

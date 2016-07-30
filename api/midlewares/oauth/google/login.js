@@ -10,13 +10,6 @@ var googleCallback = require("./callback");
 var winston = require("winston");
 
 module.exports = function(app) {
-    // serialize and deserialize
-    passport.serializeUser(function(user, done) {
-        done(null, user);
-    });
-    passport.deserializeUser(function(user, done) {
-        done(null, user);
-    });
-
+    app.use(passport.initialize());
     passport.use(new GoogleStrategy(config(app), googleCallback));
 };

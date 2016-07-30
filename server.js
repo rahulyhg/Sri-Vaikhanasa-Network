@@ -25,9 +25,6 @@ require("./api/midlewares/winstonLogger")(app);
 // register models
 require("./api/core/registerModels");
 
-// initialize session handling modules
-require("./api/core/initAppSessionModules")(app);
-
 // register api routes
 require("./api/core/registerRoutes")(app);
 
