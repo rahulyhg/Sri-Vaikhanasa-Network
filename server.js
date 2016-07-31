@@ -25,6 +25,9 @@ require("./api/midlewares/winstonLogger")(app);
 // register models
 require("./api/core/registerModels");
 
+// register global result handler
+require("./api/core/globalResultHandler");
+
 // register api routes
 require("./api/core/registerRoutes")(app);
 

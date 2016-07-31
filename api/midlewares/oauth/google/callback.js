@@ -7,9 +7,6 @@ var User = mongoose.model("User");
 // winston logger
 var winston = require("winston");
 
-// Module dependencies
-var coalesce = require("coalescy");
-
 // helper Function
 var persistUser = function(user, accessToken, profile, done) {
     if (!user) {
@@ -18,7 +15,7 @@ var persistUser = function(user, accessToken, profile, done) {
     }
     user.providerId = profile.id;
     user.provider = profile.provider;
-    user.token = coalesce(accessToken, "12345"); // 12345 is for test account
+    user.token = accessToken;
     user.email = profile.email;
     user.name = profile.displayName;
     user.profile = profile;
@@ -34,6 +31,12 @@ var persistUser = function(user, accessToken, profile, done) {
 };
 
 module.exports = function(req, accessToken, refreshToken, params, profile, done) {
+    if (process.env.NODE_ENV !== "production") {
+        if (accessToken === undefined || accessToken === null) {
+            accessToken = "12345";
+        }
+    }
+
     User
         .findOne({
             email: profile.email
