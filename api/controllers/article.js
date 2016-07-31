@@ -4,9 +4,9 @@ var mongoose = require("mongoose");
 var Article = mongoose.model("Article");
 
 /*
-* Create article
-*/
-exports.create = function (req, res, next) {
+ * Create article
+ */
+exports.create = function(req, res, next) {
   var article = new Article(req.body);
   article.user = req.user;
   article
@@ -18,7 +18,7 @@ exports.create = function (req, res, next) {
 /**
  * Get article details
  */
-exports.read = function (req, res) {
+exports.read = function(req, res) {
   // convert mongoose document to JSON
   var article = req.article ? req.article.toJSON() : {};
 
@@ -32,7 +32,7 @@ exports.read = function (req, res) {
 /**
  * Update an article
  */
-exports.update = function (req, res, next) {
+exports.update = function(req, res, next) {
   var article = req.article;
   article.title = req.body.title;
   article.content = req.body.content;
@@ -47,7 +47,7 @@ exports.update = function (req, res, next) {
 /**
  * Delete an article
  */
-exports.delete = function (req, res, next) {
+exports.delete = function(req, res, next) {
   var article = req.article;
   article
     .remove()
@@ -58,7 +58,7 @@ exports.delete = function (req, res, next) {
 /**
  * Get list of Articles
  */
-exports.list = function (req, res, next) {
+exports.list = function(req, res, next) {
   Article
     .find()
     .sort("-createdAt")
@@ -71,14 +71,20 @@ exports.list = function (req, res, next) {
 /**
  * Article middleware
  */
-exports.articleByID = function (req, res, next, id) {
+exports.articleByID = function(req, res, next, id) {
   if (global.handleBadRequest(res, id)) {
     Article
       .findById(id)
       .populate("user", "username")
       .exec()
       .then(global.handleEntityNotFound(res))
-      .then(function (entity) { if (entity) { req.article = entity; return next(); } }) // Setting the article in current req context
+      .then(function(entity) {
+        if (entity) {
+          req.article = entity;
+          return next();
+        }
+        return;
+      }) // Setting the article in current req context
       .catch(global.handleError(next));
   }
 };

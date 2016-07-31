@@ -30,6 +30,7 @@ global.handleError = function (next) {
     if (error) {
       return next(error);
     }
+    return;
   };
 };
 

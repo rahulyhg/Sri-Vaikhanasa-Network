@@ -1,7 +1,8 @@
 "use strinct";
 
 // module dependencies
-var mongoose = require("mongoose"), Schema = mongoose.Schema;
+var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 
 // define schema
 var ArticleSchema = new Schema(

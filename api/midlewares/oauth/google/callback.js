@@ -32,7 +32,7 @@ var persistUser = function(user, accessToken, profile, done) {
 
 module.exports = function(req, accessToken, refreshToken, params, profile, done) {
     if (process.env.NODE_ENV !== "production") {
-        if (accessToken === undefined || accessToken === null) {
+        if (!accessToken) {
             accessToken = "12345";
         }
     }

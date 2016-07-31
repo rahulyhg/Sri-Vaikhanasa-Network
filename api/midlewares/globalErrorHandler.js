@@ -1,7 +1,5 @@
 "use strict";
 
-var mongoose = require("mongoose");
-var Error = mongoose.model("Error");
 var winston = require("winston");
 var expressWinston = require("express-winston");
 
@@ -72,15 +70,6 @@ module.exports = function (app) {
 
     app.use(function globalErrorHandler(err, req, res, next) {
         if (err) {
-            var error = new Error({
-                requestUrl: req.url,
-                httpMethod: req.method,
-                error: err,
-                stackTrace: err.stack,
-                user: req.user,
-                clientIP: req.ip
-            });
-            error.save();
             return res.status(err.status || 500).json({
                 message: getErrorMessage(err)
             });

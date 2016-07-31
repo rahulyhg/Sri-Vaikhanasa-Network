@@ -7,13 +7,12 @@ module.exports = function(app) {
     app.get("/auth/google",
         passport.authenticate("google", {
             session: false,
-            accessType: 'offline',
-            approvalPrompt: 'force'
+            accessType: "offline",
+            approvalPrompt: "force"
             // scope: ["https://www.googleapis.com/auth/userinfo.profile",
             //     "https://www.googleapis.com/auth/userinfo.email"
             // ]
-        }),
-        function(req, res) {} // this never gets called
+        })
     );
 
     app.get("/oauth2callback",

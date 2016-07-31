@@ -6,6 +6,6 @@ module.exports = function(app) {
         clientSecret: app.get("googleOAuthClientSecret"),
         callbackURL: app.get("googleOAuthCallbackUrl"),
         passReqToCallback: true,
-        scope: ['profile', 'email']
+        scope: ["profile", "email"]
     };
 };

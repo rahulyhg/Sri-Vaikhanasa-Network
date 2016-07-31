@@ -32,7 +32,7 @@ require("./api/core/globalResultHandler");
 require("./api/core/registerRoutes")(app);
 
 // register bearer token auth module
-require("./api/midlewares/oauth/bearer")(app);
+require("./api/midlewares/oauth/bearer")();
 
 // register google oauth module
 require("./api/midlewares/oauth/google/login")(app);

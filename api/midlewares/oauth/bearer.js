@@ -4,9 +4,9 @@
 var passport = require("passport");
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
-var BearerStrategy = require('passport-http-bearer').Strategy;
+var BearerStrategy = require("passport-http-bearer").Strategy;
 
-module.exports = function(app) {
+module.exports = function() {
     passport.use(
         new BearerStrategy(
             function(accessToken, done) {

@@ -3,4 +3,4 @@
 // Module dependencies
 var passport = require("passport");
 
-module.exports = passport.authenticate('bearer', { session: false });
+module.exports = passport.authenticate("bearer", { session: false });
