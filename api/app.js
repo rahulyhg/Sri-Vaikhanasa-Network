@@ -10,10 +10,6 @@ global.app = app;
 // Initialize required core functional modules
 require("./core/initAppConfig");
 require("./core/initApiModels");
-require("./core/globalResultHandlers");
-
-// Register oauth modules
-require("./oauth/google");
 
 // Register global middlewares that will be used in request processing pipeline
 require("./middlewares/addRequestId");

@@ -4,7 +4,7 @@ var supertest = require("supertest");
 var app = require("../../app");
 global.api = supertest(app);
 global.expect = require("chai").expect;
-global.bearerToken = process.env.GOOGLE_ACCESS_TOKEN;
+global.bearerToken = app.get("GOOGLE_ACCESS_TOKEN");
 
 before(function(done) {
     app.on("dbServerConnected", function() {

@@ -2,6 +2,7 @@
 
 var mongoose = require("mongoose");
 var Article = mongoose.model("Article");
+var helpers = require("../helpers/resultHandlers");
 
 /*
  * Create article
@@ -11,8 +12,8 @@ exports.create = function(req, res, next) {
   article.user = req.user;
   article
     .save()
-    .then(global.responseWithResult(res, 201))
-    .catch(global.handleError(next));
+    .then(helpers.handleResult(res, 201))
+    .catch(helpers.handleError(next));
 };
 
 /**
@@ -40,8 +41,8 @@ exports.update = function(req, res, next) {
   article.modifiedAt = new Date();
   article
     .save()
-    .then(global.responseWithResult(res))
-    .catch(global.handleError(next));
+    .then(helpers.handleResult(res))
+    .catch(helpers.handleError(next));
 };
 
 /**
@@ -51,8 +52,8 @@ exports.delete = function(req, res, next) {
   var article = req.article;
   article
     .remove()
-    .then(global.responseWithResult(res))
-    .catch(global.handleError(next));
+    .then(helpers.handleResult(res))
+    .catch(helpers.handleError(next));
 };
 
 /**
@@ -64,27 +65,26 @@ exports.list = function(req, res, next) {
     .sort("-createdAt")
     .populate("user", "displayName")
     .exec()
-    .then(global.responseWithResult(res))
-    .catch(global.handleError(next));
+    .then(helpers.handleResult(res))
+    .catch(helpers.handleError(next));
 };
 
 /**
  * Article middleware
  */
 exports.articleByID = function(req, res, next, id) {
-  if (global.handleBadRequest(res, id)) {
+  if (helpers.handleBadRequest(res, id)) {
     Article
       .findById(id)
       .populate("user", "displayName")
       .exec()
-      .then(global.handleEntityNotFound(res))
+      .then(helpers.handleEntityNotFound(res))
       .then(function(entity) {
         if (entity) {
-          req.article = entity;
+          req.article = entity; // Setting the article in current req context
           return next();
         }
-        return;
-      }) // Setting the article in current req context
-      .catch(global.handleError(next));
+      })
+      .catch(helpers.handleError(next));
   }
 };
