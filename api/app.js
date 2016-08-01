@@ -21,6 +21,7 @@ require("./core/globalResultHandlers");
 require("./oauth/google");
 
 // Register global middlewares that will be used in request processing pipeline
+require("./middlewares/addRequestId");
 require("./middlewares/httpBodyParser");
 require("./middlewares/winston.logger");
 require("./middlewares/passport.authentication");
@@ -30,6 +31,7 @@ require("./routes/article");
 require("./routes/user");
 
 // Register post request middlewares
+require("./middlewares/winston.errorLogger");
 require("./middlewares/globalErrorHandler");
 
 // start db connectivity

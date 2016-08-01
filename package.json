@@ -17,15 +17,16 @@
   "dependencies": {
     "bluebird": "2.10.2",
     "body-parser": "1.15.2",
+    "coalescy": "1.0.0",
     "config": "1.21.0",
     "express": "4.14.0",
+    "express-request-id": "^1.1.0",
     "express-winston": "1.4.2",
     "jsonwebtoken": "7.1.6",
     "mongoose": "4.5.3",
     "passport": "0.3.2",
     "passport-google-token": "0.1.2",
-    "winston": "2.2.0",
-    "coalescy": "1.0.0"
+    "winston": "2.2.0"
   },
   "devDependencies": {
     "chai": "3.5.0",

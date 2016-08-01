@@ -2,14 +2,13 @@
 
 var winston = require("winston");
 var expressWinston = require("express-winston");
-
 var app = global.app;
-app.use(expressWinston.logger({
+
+app.use(expressWinston.errorLogger({
     transports: [
         new(winston.transports.File)({
             filename: app.get("LOG_FILE"),
-            colorize: true,
-            json: true
+            colorize: true
         })
     ],
     meta: false,
