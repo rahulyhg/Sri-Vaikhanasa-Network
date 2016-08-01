@@ -2,14 +2,13 @@
 
 // winston logger
 var winston = require("winston");
+var app = global.app;
 
-module.exports = function (app) {
-    // Starts app server so that REST services will be exposed
-    var server = app.listen(
-        app.get("port"),
-        app.get("host"),
-        function () {
-            winston.info("Web server started and listening at " + JSON.stringify(server.address()));
-            app.emit("appServerStarted");
-        });
-};
+// Starts app server so that REST services will be exposed
+var server = app.listen(
+    app.get("PORT"),
+    app.get("HOST"),
+    function() {
+        winston.info("Web server started and listening at " + JSON.stringify(server.address()));
+        app.emit("appServerStarted");
+    });

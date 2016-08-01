@@ -1,20 +1,20 @@
 "use strict";
 
-var article = require("../controllers/article");
-var ensureAuthenticated = require("../midlewares/ensureAuthenticated");
+var article = require("../controllers/articleApi");
+var ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 
-module.exports = function (app) {
-    // Articles collection routes
-    app.route("/api/article")
-        .get(article.list)
-        .put(ensureAuthenticated, article.create);
+var app = global.app;
 
-    // Single article routes
-    app.route("/api/article/:articleId")
-        .get(article.read)
-        .post(ensureAuthenticated, article.update)
-        .delete(ensureAuthenticated, article.delete);
+// Articles collection routes
+app.route("/api/article")
+    .get(article.list)
+    .put(ensureAuthenticated, article.create);
 
-    // Finish by binding the article middleware
-    app.param("articleId", article.articleByID);
-};
+// Single article routes
+app.route("/api/article/:articleId")
+    .get(article.read)
+    .post(ensureAuthenticated, article.update)
+    .delete(ensureAuthenticated, article.delete);
+
+// Finish by binding the article middleware
+app.param("articleId", article.articleByID);

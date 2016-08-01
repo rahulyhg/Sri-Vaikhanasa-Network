@@ -1,8 +1,12 @@
 "use strinct";
 
 // module dependencies
-var mongoose = require("mongoose"),
-    Schema = mongoose.Schema;
+var mongoose = require("mongoose");
+var Schema = mongoose.Schema;
+
+var options = {
+    timestamps: true
+};
 
 // define schema
 var UserSchema = new Schema({
@@ -23,16 +27,8 @@ var UserSchema = new Schema({
     token: {
         type: String
     },
-    profile: Object,
-    modifiedAt: {
-        type: Date,
-        default: Date.now
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
-});
+    profile: Object
+}, options);
 
 // register with mongoose
 mongoose.model("User", UserSchema);

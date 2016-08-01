@@ -6,7 +6,7 @@ var expressWinston = require("express-winston");
 /**
  * Get unique error field name
  */
-var getUniqueErrorMessage = function (err) {
+var getUniqueErrorMessage = function(err) {
     var output;
 
     try {
@@ -15,7 +15,8 @@ var getUniqueErrorMessage = function (err) {
             // support mongodb <= 3.0 (default: MMapv1 engine)
             // "errmsg" : "E11000 duplicate key error index: mean-dev.users.$email_1 dup key: { : \"test@user.com\" }"
             begin = err.errmsg.lastIndexOf(".$") + 2;
-        } else {
+        }
+        else {
             // support mongodb >= 3.2 (default: WiredTiger engine)
             // "errmsg" : "E11000 duplicate key error collection: mean-dev.users index: email_1 dup key: { : \"test@user.com\" }"
             begin = err.errmsg.lastIndexOf("index: ") + 7;
@@ -23,7 +24,8 @@ var getUniqueErrorMessage = function (err) {
         var fieldName = err.errmsg.substring(begin, err.errmsg.lastIndexOf("_1"));
         output = fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + " already exists";
 
-    } catch (ex) {
+    }
+    catch (ex) {
         output = "Unique field already exists";
     }
 
@@ -33,7 +35,7 @@ var getUniqueErrorMessage = function (err) {
 /**
  * Get the error message from error object
  */
-var getErrorMessage = function (err) {
+var getErrorMessage = function(err) {
 
     var message = "";
 
@@ -46,7 +48,8 @@ var getErrorMessage = function (err) {
             default:
                 message = "Something went wrong";
         }
-    } else {
+    }
+    else {
         for (var errName in err.errors) {
             if (err.errors[errName].message) {
                 message = err.errors[errName].message;
@@ -57,11 +60,13 @@ var getErrorMessage = function (err) {
     return message;
 };
 
-module.exports = function (app) {
+module.exports = function() {
+
+    var app = global.app;
 
     app.use(expressWinston.errorLogger({
         transports: [
-            new (winston.transports.File)({
+            new(winston.transports.File)({
                 filename: "./api.log",
                 colorize: true
             })

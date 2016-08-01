@@ -75,7 +75,7 @@ exports.articleByID = function(req, res, next, id) {
   if (global.handleBadRequest(res, id)) {
     Article
       .findById(id)
-      .populate("user", "username")
+      .populate("user", "displayName")
       .exec()
       .then(global.handleEntityNotFound(res))
       .then(function(entity) {

@@ -1,10 +1,8 @@
 "use strict";
 
-var ensureAuthenticated = require("../midlewares/ensureAuthenticated");
+var passport = require("passport");
+var ensureAuthenticated = require("../middlewares/ensureAuthenticated");
+var userApi = require("../controllers/userApi");
+var app = global.app;
 
-module.exports = function(app) {
-    app.route("/api/user/isAuthenticated")
-        .get(ensureAuthenticated, function(req, res) {
-            res.send(req.isAuthenticated());
-        });
-};
+app.get('/api/user/google/token', ensureAuthenticated, userApi.getMe);

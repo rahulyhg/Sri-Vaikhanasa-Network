@@ -1,11 +1,9 @@
 {
-    "appServer": {
-        "host": "127.0.0.1",
-        "port": 3000
-    },
-    "dbServer": {
-        "url": "mongodb://db1.example.net,db2.example.net:2500/?replicaSet=test"
-    },
-    "tokenPrivateKey": "my secret key go's here",
-    "tokenExpiresIn": "5m"
+    "HOST": "0.0.0.0",
+    "PORT": 8080,
+    "DB_CONN_URL": "mongodb://acharya:acharya@ds023694.mlab.com:23694/achmongodb",
+    "GOOGLE_CLIENT_ID": "878822239995-60p9ug550ioav6svm5cvt9a6uau1tcvd.apps.googleusercontent.com",
+    "GOOGLE_CLIENT_SECRET": "VHuWesR14VB_HiPcSKE0JCEJ",
+    "GOOGLE_ACCESS_TOKEN": "ya29.Ci8yA_T9-IV4uYFgAUX0BC0Rhcqo8jnIexTHGSlC9RSdm4TeItH5PMmkyTS4bqKK7w",
+    "LOG_FILE": "./api.log"
 }

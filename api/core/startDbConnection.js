@@ -1,7 +1,6 @@
 "use strict";
 
 // Module dependencies
-var config = require("config");
 var mongoose = require("mongoose");
 
 // making mongoose to use bluebird promises library
@@ -11,17 +10,18 @@ Promise.promisifyAll(mongoose);
 
 // winston logger
 var winston = require("winston");
+var app = global.app;
 
-module.exports = function (app) {
-    // connect database using mongoose framework
-    mongoose.connect(app.get("connectionString"));
-    var db = mongoose.connection;
+// connect database using mongoose framework
+mongoose.connect(app.get("DB_CONN_URL"));
+var db = mongoose.connection;
 
-    // on error through the error
-    db.on("error", function () { winston.error("Database connection error:"); });
-    // on connect
-    db.once("open", function () {
-        winston.info("Database connection established successfully....");
-        app.emit("dbServerConnected");
-    });
-};
+// on error through the error
+db.on("error", function(err) {
+    winston.error("Database connection error:" + err);
+});
+// on connect
+db.once("open", function() {
+    winston.info("Database connection established successfully....");
+    app.emit("dbServerConnected");
+});
