@@ -32,6 +32,6 @@
     "coveralls": "2.11.11",
     "mocha": "2.5.3",
     "nyc": "7.0.0",
-    "supertest": "1.2.0",
+    "supertest": "1.2.0"
   }
 }
