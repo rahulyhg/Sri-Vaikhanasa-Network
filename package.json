@@ -1,7 +1,7 @@
 {
   "name": "svnapi",
   "version": "1.0.0",
-  "description": "Web Api for SriVaikhanasa.Net",
+  "description": "Sri Vaikhanasa Network Application",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
