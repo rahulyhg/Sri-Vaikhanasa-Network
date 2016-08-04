@@ -12,7 +12,7 @@ before(function(done) {
     });
 });
 
-describe("SVN API Test", function() {
+describe("Integration Tests", function() {
     require("./google.auth");
     require("./article");
 });

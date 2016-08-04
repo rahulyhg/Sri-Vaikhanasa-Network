@@ -12,10 +12,7 @@ var AppServer = require("./core/appServer");
 
 var done = function(nextAction) {
     return function(err) {
-        if (err) {
-            logger.log("Program aborted due to: " + err);
-        }
-        else if (nextAction) {
+        if (!err && nextAction) {
             nextAction();
         }
     }
