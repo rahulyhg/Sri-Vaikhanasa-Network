@@ -2,7 +2,7 @@
 
 var mongoose = require("mongoose");
 
-exports.handleBadRequest = function (res, id) {
+exports.handleBadRequest = function(res, id) {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res.status(400).send("Invalid ID");
     return false;
@@ -10,8 +10,8 @@ exports.handleBadRequest = function (res, id) {
   return true;
 };
 
-exports.handleEntityNotFound = function (res) {
-  return function (result) {
+exports.handleEntityNotFound = function(res) {
+  return function(result) {
     if (!result) {
       res.status(404).send("Resource not found...");
     }
@@ -19,8 +19,8 @@ exports.handleEntityNotFound = function (res) {
   };
 };
 
-exports.handleResult = function (res, statusCode) {
-  return function (result) {
+exports.handleResult = function(res, statusCode) {
+  return function(result) {
     if (result) {
       statusCode = statusCode || 200;
       res.status(statusCode).json(result);
@@ -28,12 +28,10 @@ exports.handleResult = function (res, statusCode) {
   };
 };
 
-exports.handleError = function (next) {
-  return function (error) {
+exports.handleError = function(next) {
+  return function(error) {
     if (error) {
       return next(error);
     }
-    return;
   };
 };
-

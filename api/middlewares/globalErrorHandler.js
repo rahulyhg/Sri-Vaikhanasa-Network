@@ -3,12 +3,9 @@
 var app = global.app;
 
 app.use(function globalErrorHandler(err, req, res, next) {
-    if (err) {
-        return res.status(err.status || 500).json({
-            message: "Something went wrong. Please contact administrator with the Ref.ID: " + req.id
-        });
-    }
-    next();
+    return res.status(err.status || 500).json({
+        message: "Something went wrong. Please contact administrator with the Ref.ID: " + req.id
+    });
 });
 
 // HTTP Status codes just for reference

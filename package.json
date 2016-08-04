@@ -1,11 +1,13 @@
 {
   "name": "svnapi",
   "version": "1.0.0",
-  "description": "Web Api for SriVaikhanasa.Net",
+  "description": "Sri Vaikhanasa Network Application",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "nyc --reporter=lcov _mocha ./api/tests/index.js",
+    "uTest": "nyc --reporter=lcov _mocha ./api/tests/uTests/index.js",
+    "iTest": "nyc --reporter=lcov _mocha ./api/tests/iTests/index.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Acharya Raja Sekhar Brundhavanam",
