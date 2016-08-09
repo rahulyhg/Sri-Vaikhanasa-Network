@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Vaikhansa Network</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
+
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -35,9 +35,294 @@
     </div>
 
     <h2>Hello</h2>
-    <div ng-include="'templates/contact.html'"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <h1 class="h1">Contact us</h1>
+                <p>If you have any queries or feedback then please feel free to drop us a line.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-sm">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">
+                                Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">
+                                Email Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                        </span>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">
+                                Subject</label>
+                                    <select id="subject" name="subject" class="form-control" required="required">
+                                <option value="na" selected="">Choose One:</option>
+                                <option value="service">General Customer Service</option>
+                                <option value="suggestions">Suggestions</option>
+                                <option value="product">Product Support</option>
+                            </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">
+                                Message</label>
+                                    <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required" placeholder="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                            Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <hr/>
-    <div ng-include="'templates/footer.html'"></div>
+    <style>
+        /*Footer Contact*/
+        
+        .footer-contact {
+            background: #2c2c2c;
+            padding: 20px 0;
+            color: #a8a8a8;
+        }
+        
+        .footer-contact h3,
+        .footer-contact p {
+            color: #a8a8a8;
+        }
+        
+        .footer-contact .title {
+            border-bottom: 1px solid #000;
+        }
+        
+        .footer-contact ul {
+            list-style: none;
+        }
+        
+        .footer-contact ul li {
+            line-height: 24px;
+        }
+        
+        .footer-contact ul li .glyphicon {
+            font-size: 10px;
+            top: 0;
+        }
+        /*Footer CSS*/
+        
+        footer {
+            background: #b1b0b0;
+        }
+        
+        footer .panel {
+            box-shadow: none;
+        }
+        
+        .collapse-footer {}
+        
+        .collapse-footer p {
+            font-size: 14px;
+            line-height: normal;
+        }
+        
+        .collapse-footer .panel {
+            background: none;
+            background-color: transparent;
+            border-radius: 0;
+            margin-bottom: 0;
+            border: none;
+        }
+        
+        .collapse-footer .panel-heading {
+            background-color: #707070;
+            color: #231f20;
+            border-radius: 0;
+        }
+        
+        .collapse-footer .nav-footer {
+            padding: 0;
+            color: #312424;
+            margin-left: 0;
+        }
+        
+        .collapse-footer .nav-footer li {
+            list-style: none;
+        }
+        
+        .collapse-footer h5.title {
+            border-bottom: 1px #c4c4c4 solid;
+            padding-bottom: 0;
+            font-size: 18px;
+            font-weight: bold;
+            padding-bottom: 6px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+        
+        .collapse-footer h5.title span {
+            border-bottom: 3px #312424 solid;
+            bottom: 1px;
+            padding-bottom: 4px;
+        }
+        
+        .collapse-footer .col-lg-6 .nav-footer li {
+            width: 45%;
+            margin-right: 5%;
+            float: left;
+        }
+        
+        .collapse-footer .nav-footer li {}
+        
+        .collapse-footer .nav-footer li a {
+            color: #312424;
+            font-size: 14px;
+            line-height: 18px;
+            padding: 5px 0;
+            display: inherit;
+        }
+        
+        .collapse-footer .nav-footer li a:hover {
+            background: none;
+            background-color: transparent;
+            color: #000;
+        }
+        /*footer Subscribe*/
+        
+        #subscribe {
+            float: right;
+            margin-top: 9px;
+            width: 250px;
+        }
+        
+        .subscribe {
+            width: 100%;
+            position: relative;
+            float: left;
+            line-height: 22px;
+            border: 1px #312424 solid;
+            border-radius: 3px;
+            padding: 3px;
+        }
+        
+        .subscribe button.btn {
+            float: right;
+            z-index: 999;
+            position: relative;
+            background-color: #312424;
+            border: none;
+            box-shadow: none !important;
+            text-shadow: none;
+        }
+        
+        .subscribe input[type="text"] {
+            position: absolute;
+            width: 65%;
+            float: Left;
+            margin-left: 0;
+            height: 30px;
+            line-height: 18px;
+            padding: 0 2px 0 26px;
+            border-radius: 1px;
+            border: none;
+            box-shadow: none !important;
+            text-shadow: none;
+            z-index: 0;
+            background: none;
+            background-color: transparent;
+            background-position: 8px 10px;
+            background-repeat: no-repeat;
+        }
+        
+        .subscribe:hover input,
+        .subscribe input:focus {
+            width: 100%;
+            margin-left: 0px;
+        }
+        /*Copyrights CSS*/
+        
+        .copyright {
+            background: #2c2c2c;
+            padding: 0 20px;
+            color: #b1b0b0;
+            font-size: 12px;
+        }
+        
+        .copyright-img {
+            padding: 20px 0;
+        }
+    </style>
+
+    <!-- footer -->
+    <footer role="contentinfo" class="site-footer" id="colophon">
+        <div class="container">
+            <div class="row">
+                <div id="accordion" class="collapse-footer">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h5 class="title"><span>Main Navigation</span></h5>
+                                    <div class="menu-main-menu-container">
+                                        <ul class="nav nav-footer" id="menu-main-menu-1">
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-16"><a href="http://localhost/wpJoinRedHawk/">Home</a></li>
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="#">Service Support Model</a></li>
+                                            <li><a href="#">Payouts And Fees</a></li>
+                                            <li><a href="#">Practice Models</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="#">Join With Us</a></li>
+                                            <li><a href="#">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6">
+                                    <h5 class="title"><span>Site map</span></h5>
+                                    <div class="menu-footer-sitemap-container">
+                                        <ul class="nav nav-footer" id="menu-footer-sitemap">
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-87" id="menu-item-87"><a href="http://localhost/wpJoinRedHawk/?page_id=82">Payouts And Fees</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88" id="menu-item-88"><a href="#">Service Support Model</a></li>
+                                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-89" id="menu-item-89"><a href="#">About Us</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3  col-sm-6">
+                                    <h5 class="title"><span>Don't hesitate to contact us!</span></h5>
+                                    <p> Please give us time to let <strong>JoindesignTrick</strong> know about any problems or suggestions what you have.</p>
+                                    <div class="clear"> </div>
+                                    <a class="btn btn-default btn-sm" href="#">Contact with us</a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row copyright-img">
+                    <div class="col-lg-4 col-sm-4"> Total Control True Independence </div>
+                    <div class="col-lg-8 col-sm-8 text-right" id="footertext"> Copyright © 2014 JoindesignTrick Inc </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Copyright -->
+    </footer>
+    <!-- /footer -->
 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
