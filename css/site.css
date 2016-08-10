@@ -6,8 +6,15 @@ html {
     color: #777;
 }
 
-.navbar-inverse {
+.opaque-navbar {
     background-color: #0C3C60;
+    transition: background-color .5s ease 0s;
+}
+
+.opaque-navbar.opaque {
+    background-color: transparent;
+    transition: background-color .5s ease 0s;
+    border-bottom: 0px;
 }
 
 .parallax {
