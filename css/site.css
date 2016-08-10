@@ -6,18 +6,17 @@ html {
     color: #777;
 }
 
-.bgimg-1,
-.bgimg-2,
-.bgimg-3 {
+.navbar-inverse {
+    background-color: #0C3C60;
+}
+
+.parallax {
     position: relative;
-    opacity: 0.8;
+    /*opacity: 0.8;*/
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.bgimg-1 {
     background-image: url("http://www.srinivasagovinda.com/images/2010/release1/srinivasa-govinda-rel1-8.jpg");
     min-height: 100%;
 }
@@ -25,25 +24,40 @@ html {
 .caption {
     position: absolute;
     left: 0;
-    top: 50%;
+    bottom: 0%;
     width: 100%;
     text-align: center;
     color: #000;
+    background-color:white; 
+    opacity: 0.8;
 }
 
-.caption span.border {
-    background-color: #111;
-    color: #fff;
-    padding: 18px;
-    font-size: 25px;
-    letter-spacing: 10px;
+.caption span.title{
+    line-height: 1.3em; 
+    text-align: center;
+    font: normal normal normal 60px/1.4em raleway,sans-serif;
+    color: #0C3C60;
 }
 
-h3 {
+.caption p.tagline{
+    font: normal normal normal 18px/1.4em raleway,sans-serif;
+    color: #0C3C60;
+}
+
+.aboutUs {
+    color: #ddd;
+    background-color:#0C3C60;
+    text-align:center;
+    padding:50px 80px;
+    text-align: justify;
+}
+
+.pageMainTitle {
     letter-spacing: 5px;
     text-transform: uppercase;
     font: 20px "Lato", sans-serif;
     color: #ddd;
+    text-align:center;
 }
 
 
@@ -215,7 +229,7 @@ footer .panel {
 /*Copyrights CSS*/
 
 .copyright {
-    background: #2c2c2c;
+    background: #0C3C60;
     padding: 0 20px;
     color: #b1b0b0;
     font-size: 12px;
