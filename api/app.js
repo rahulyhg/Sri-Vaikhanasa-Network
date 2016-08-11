@@ -33,6 +33,7 @@ require("./middlewares/winston.logger");
 require("./middlewares/passport.authentication");
 
 // Register all routes for api methods
+require("./routes/contactUs");
 require("./routes/article");
 require("./routes/user");
 
