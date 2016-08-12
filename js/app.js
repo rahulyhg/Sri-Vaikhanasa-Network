@@ -3,7 +3,7 @@ var app = angular.module("svnUiApp", []);
 app.controller("contactUsCtrl", function ($scope, $http) {
 
     $scope.submit = function () {
-        
+
         var data = {
             name: $scope.name,
             email: $scope.email,
@@ -13,8 +13,7 @@ app.controller("contactUsCtrl", function ($scope, $http) {
 
         var config = {
             headers: {
-                "Content-Type": "application/json;",
-                "Access-Control-Allow-Origin": "*"
+                "Content-Type": "application/json"
             }
         }
 
