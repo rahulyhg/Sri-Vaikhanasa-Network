@@ -6,6 +6,10 @@ html {
     color: #777;
 }
 
+.navbar-inverse .navbar-brand{
+    color: white;
+}
+
 .opaque-navbar {
     background-color: #0C3C60;
     transition: background-color .5s ease 0s;
@@ -59,6 +63,10 @@ html {
     text-align: justify;
 }
 
+.contactUsPanel{
+    padding: 50px 0px;
+}
+
 .pageMainTitle {
     letter-spacing: 5px;
     text-transform: uppercase;
@@ -102,14 +110,12 @@ html {
 /*Footer CSS*/
 
 footer {
-    background: #b1b0b0;
+    background: #B0C4DE;
 }
 
 footer .panel {
     box-shadow: none;
 }
-
-.collapse-footer {}
 
 .collapse-footer p {
     font-size: 14px;
@@ -141,7 +147,7 @@ footer .panel {
 }
 
 .collapse-footer h5.title {
-    border-bottom: 1px #c4c4c4 solid;
+    border-bottom: 1px #2F7680 solid;
     padding-bottom: 0;
     font-size: 18px;
     font-weight: bold;
@@ -151,7 +157,7 @@ footer .panel {
 }
 
 .collapse-footer h5.title span {
-    border-bottom: 3px #312424 solid;
+    border-bottom: 3px #0C3C60 solid;
     bottom: 1px;
     padding-bottom: 4px;
 }
@@ -161,8 +167,6 @@ footer .panel {
     margin-right: 5%;
     float: left;
 }
-
-.collapse-footer .nav-footer li {}
 
 .collapse-footer .nav-footer li a {
     color: #312424;
@@ -177,61 +181,6 @@ footer .panel {
     background-color: transparent;
     color: #000;
 }
-
-
-/*footer Subscribe*/
-
-#subscribe {
-    float: right;
-    margin-top: 9px;
-    width: 250px;
-}
-
-.subscribe {
-    width: 100%;
-    position: relative;
-    float: left;
-    line-height: 22px;
-    border: 1px #312424 solid;
-    border-radius: 3px;
-    padding: 3px;
-}
-
-.subscribe button.btn {
-    float: right;
-    z-index: 999;
-    position: relative;
-    background-color: #312424;
-    border: none;
-    box-shadow: none !important;
-    text-shadow: none;
-}
-
-.subscribe input[type="text"] {
-    position: absolute;
-    width: 65%;
-    float: Left;
-    margin-left: 0;
-    height: 30px;
-    line-height: 18px;
-    padding: 0 2px 0 26px;
-    border-radius: 1px;
-    border: none;
-    box-shadow: none !important;
-    text-shadow: none;
-    z-index: 0;
-    background: none;
-    background-color: transparent;
-    background-position: 8px 10px;
-    background-repeat: no-repeat;
-}
-
-.subscribe:hover input,
-.subscribe input:focus {
-    width: 100%;
-    margin-left: 0px;
-}
-
 
 /*Copyrights CSS*/
 

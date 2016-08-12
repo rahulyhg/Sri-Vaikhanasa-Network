@@ -2,32 +2,29 @@ var app = angular.module("svnUiApp", []);
 
 app.controller("contactUsCtrl", function ($scope, $http) {
 
-    $scope.SendData = function () {
-        // use $.param jQuery function to serialize data from JSON 
-        // var data = $.param({
-        //     fName: $scope.firstName,
-        //     lName: $scope.lastName
-        // });
+    $scope.submit = function () {
+        
+        var data = {
+            name: $scope.name,
+            email: $scope.email,
+            subject: $scope.subject,
+            message: $scope.message
+        };
 
-        alert("Hello");
+        var config = {
+            headers: {
+                "Content-Type": "application/json;",
+                "Access-Control-Allow-Origin": "*"
+            }
+        }
 
-        // var config = {
-        //     headers: {
-        //         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-        //     }
-        // }
-
-        // $http.post('/ServerRequest/PostDataResponse', data, config)
-        //     .success(function (data, status, headers, config) {
-        //         $scope.PostDataResponse = data;
-        //     })
-        //     .error(function (data, status, header, config) {
-        //         $scope.ResponseDetails = "Data: " + data +
-        //             "<hr />status: " + status +
-        //             "<hr />headers: " + header +
-        //             "<hr />config: " + config;
-        //     });
+        $http.put("http://api.srivaikhanasa.net/api/contactUs/submit", data, config)
+            .then(
+            function (response) {
+                alert("Done");
+            }, function (response) {
+                alert("Error");
+            }
+            );
     };
-
 });
-
