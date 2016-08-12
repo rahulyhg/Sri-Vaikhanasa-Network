@@ -27,6 +27,7 @@ require("./core/initAppConfig");
 require("./core/initApiModels");
 
 // Register global middlewares that will be used in request processing pipeline
+require("./middlewares/cors");
 require("./middlewares/addRequestId");
 require("./middlewares/httpBodyParser");
 require("./middlewares/winston.logger");
