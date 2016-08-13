@@ -13,6 +13,8 @@ exports.submit = function(req, res, next) {
 
     var emailSubject = "Auto Mail: " + req.body.subject + " - " + req.body.name + " <" + req.body.email + ">";
 
+    console.log(req.body);
+
     emailer.sendEmail(
         req.body.name,
         req.body.email,
