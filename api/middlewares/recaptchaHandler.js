@@ -14,9 +14,9 @@ exports.validate = function(req, res, next) {
         body = JSON.parse(body);
         // Success will be true or false depending upon captcha validation.
         if (body.success !== undefined && !body.success) {
-            return next("reCAPTCHA verification failed");
+            return res.status(500).json("reCAPTCHA verification failed");
         }
-        next();
+        return next();
     });
 
 };
