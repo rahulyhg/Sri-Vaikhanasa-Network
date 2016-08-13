@@ -4,6 +4,7 @@ app.controller("contactUsCtrl", function ($scope, $http) {
 
     $scope.reCaptchaResponse = "";
     $scope.setReCaptchaResponse = function (response) {
+        alert(response);
         $scope.reCaptchaResponse = response;
     };
 
