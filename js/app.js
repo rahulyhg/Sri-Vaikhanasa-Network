@@ -9,7 +9,7 @@ app.controller("contactUsCtrl", function ($scope, $http) {
             "email": $scope.email,
             "subject": $scope.subject,
             "message": $scope.message,
-            "g-recaptcha-response": $scope.gRecaptchaResponse
+            "gRecaptchaResponse": $scope.gRecaptchaResponse
         };
 
         var config = {
