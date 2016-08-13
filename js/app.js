@@ -2,13 +2,19 @@ var app = angular.module("svnUiApp", []);
 
 app.controller("contactUsCtrl", function ($scope, $http) {
 
+    $scope.reCaptchaResponse = "";
+    $scope.setReCaptchaResponse = function (response) {
+        $scope.reCaptchaResponse = response;
+    };
+
     $scope.submit = function () {
 
         var data = {
-            name: $scope.name,
-            email: $scope.email,
-            subject: $scope.subject,
-            message: $scope.message
+            "name": $scope.name,
+            "email": $scope.email,
+            "subject": $scope.subject,
+            "message": $scope.message,
+            "g-recaptcha-response": reCaptchaResponse
         };
 
         var config = {
