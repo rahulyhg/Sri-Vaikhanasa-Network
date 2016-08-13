@@ -14,7 +14,7 @@ app.controller("contactUsCtrl", function ($scope, $http) {
             "email": $scope.email,
             "subject": $scope.subject,
             "message": $scope.message,
-            "g-recaptcha-response": reCaptchaResponse
+            "g-recaptcha-response": $scope.reCaptchaResponse
         };
 
         var config = {
