@@ -1,4 +1,4 @@
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit' async defer></script>
 
 <div class="container contactUsPanel">
     <div class="row">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="g-recaptcha" data-sitekey="6LcXhicTAAAAAP7k8wOMP841oVA3AMef8qegKWVE" on-success="setReCaptchaResponse(response)"></div>
+                            <div vc-recaptcha key="'6LcXhicTAAAAAP7k8wOMP841oVA3AMef8qegKWVE'" ng-model="gRecaptchaResponse"></div>
                             <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">Send Message</button>
                         </div>
                     </div>

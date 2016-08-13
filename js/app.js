@@ -1,12 +1,6 @@
-var app = angular.module("svnUiApp", []);
+var app = angular.module("svnUiApp", ['vcRecaptcha']);
 
 app.controller("contactUsCtrl", function ($scope, $http) {
-
-    $scope.reCaptchaResponse = "";
-    $scope.setReCaptchaResponse = function (response) {
-        alert(response);
-        $scope.reCaptchaResponse = response;
-    };
 
     $scope.submit = function () {
 
@@ -15,7 +9,7 @@ app.controller("contactUsCtrl", function ($scope, $http) {
             "email": $scope.email,
             "subject": $scope.subject,
             "message": $scope.message,
-            "g-recaptcha-response": $scope.reCaptchaResponse
+            "g-recaptcha-response": $scope.gRecaptchaResponse
         };
 
         var config = {
