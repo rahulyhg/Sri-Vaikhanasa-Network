@@ -1,63 +1,44 @@
 <html ng-app="svnUiApp">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="878822239995-8cab6qdvv11m2dhnnc6tcr4l7558tbki.apps.googleusercontent.com">
+    <meta charset="UTF-8">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/site.css" rel="stylesheet">
     <title>Sri Vaikhansa Network</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-    <link href="css/site.css" rel="stylesheet">
 </head>
 
 <body>
 
-
-    <div class="navbar opaque-navbar opaque navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">SriVaikhanasa.Net</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
+    <div ng-include="'app/components/core/navbar/navbar.view.html'"></div>
 
     <div class="parallax">
-        <div class="caption">
-            <span class="title">Sri Vaikhanasa Network</span>
-            <p class="tagline">A platform that brings all Vaikhanasa's across the world together to share and celebrate</p>
+        <div ng-include="'app/components/home/home.view.html'"></div>
+    </div>
+
+    <div ng-include="'app/components/home/about/about.view.html'"></div>
+
+    <div class="contact-parallax">
+        <div class="row">
+            <div ng-include="'app/components/home/contact/contact.view.html'"></div>
         </div>
     </div>
 
-    <div ng-include="'templates/aboutUs.html'"></div>
+    <div ng-include="'app/components/core/footer/footer.view.html'"></div>
 
-    <div ng-include="'templates/contactUs.html'"></div>
+    <!-- Non Angular JS -->
+    <script src="assets/js/jquery-3.1.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/site.js"></script>
 
-    <div ng-include="'templates/footer.html'"></div>
+    <!-- Angular JS -->
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/google-plus-signin.js"></script>
+    <script src="assets/js/angular-recaptcha.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit' async defer></script>
+    <script src="app/app.js"></script>
+    <script src="app/shared/auth/google.signin.controller.js"></script>
+    <script src="app/components/home/contact/contact.controller.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-recaptcha/3.0.4/angular-recaptcha.min.js"></script>
-    <script src="js/google-sign-in.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/app.js"></script>    
-    <script src="https://raw.githubusercontent.com/astiusa/ng-google-signin/master/src/ng-google-signin.js"></script>    
 </body>
 
 </html>

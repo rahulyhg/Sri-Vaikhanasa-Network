@@ -1,6 +1,6 @@
-var app = angular.module("svnUiApp", ['vcRecaptcha']);
+var app = angular.module("svnUiApp");
 
-app.controller("contactUsCtrl", function ($scope, $http) {
+app.controller("contact.controller", function ($scope, $http) {
 
     $scope.submit = function () {
 

@@ -28,8 +28,25 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("http://www.srinivasagovinda.com/images/2010/release1/srinivasa-govinda-rel1-8.jpg");
+    background-image: url("../img/srinivasa-govinda.jpg");
     min-height: 100%;
+}
+
+.contact-parallax {
+    position: relative;
+    /*opacity: 0.8;*/
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../img/contactus.jpg");
+    min-height: 100%;
+}
+
+.contact-panel {
+    color: #000;
+    background-color:white; 
+    opacity: 0.8;
 }
 
 .caption {
