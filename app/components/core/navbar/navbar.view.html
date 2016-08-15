@@ -11,12 +11,17 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav"></ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li ng-hide="isSignedIn()">                    
-                    <a href="#" id="google-signin-button">Sign In</a>
+            <ul class="nav navbar-nav navbar-right">                
+                <li ng-show="isSignedIn">
+                    <a href="#">Hello, <span ng-bind="user.name"></span>
+                        <img src="{{user.photo}}" class="img-rounded" alt="{{user.name}}" width="20" height="20">
+                    </a>
                 </li>
-                <li ng-show="isSignedIn()">                    
-                    <a href="#" id="google-signout-button" ng-click="signOut()">Sign Out</a>
+                <li ng-show="isSignedIn">
+                    <a href="#" ng-click="signOut()">Sign Out</a>
+                </li>
+                <li ng-hide="isSignedIn">
+                    <a href="#" id="google-signin-button">Sign In</a>
                 </li>
             </ul>
         </div>

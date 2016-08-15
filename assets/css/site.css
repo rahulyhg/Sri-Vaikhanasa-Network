@@ -16,7 +16,9 @@ html {
 }
 
 .opaque-navbar.opaque {
-    background-color: transparent;
+    /*background-color: transparent;*/
+    background-color: #0C3C60;
+    opacity: 0.9;
     transition: background-color .5s ease 0s;
     border-bottom: 0px;
 }
