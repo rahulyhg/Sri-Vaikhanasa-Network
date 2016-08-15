@@ -1,1 +1,1 @@
-var app = angular.module("svnUiApp", ['vcRecaptcha', 'directive.g+signin']);
+var app = angular.module("svnUiApp", ["ngStorage", "vcRecaptcha", "directive.g+signin"]);
