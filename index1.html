@@ -1,7 +1,8 @@
 <html ng-app="svnUiApp">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/site.css" rel="stylesheet">
     <title>Sri Vaikhansa Network</title>
@@ -16,12 +17,8 @@
     </div>
 
     <div ng-include="'app/components/home/about/about.view.html'"></div>
-
-    <div class="contact-parallax">
-        <div class="row">
-            <div ng-include="'app/components/home/contact/contact.view.html'"></div>
-        </div>
-    </div>
+    
+    <div ng-include="'app/components/home/contact/contact.view.html'"></div>
 
     <div ng-include="'app/components/core/footer/footer.view.html'"></div>
 

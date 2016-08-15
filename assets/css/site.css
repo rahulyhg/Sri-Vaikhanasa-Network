@@ -34,13 +34,11 @@ html {
 
 .contact-parallax {
     position: relative;
-    /*opacity: 0.8;*/
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url("../img/contactus.jpg");
-    min-height: 100%;
 }
 
 .contact-panel {
