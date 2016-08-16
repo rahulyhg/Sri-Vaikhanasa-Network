@@ -43,17 +43,25 @@ angular.module('svnUiApp')
         };
 
         function signOut() {
+
             var revokeUrl = "https://accounts.google.com/o/oauth2/revoke?token=" + $scope.user.access_token;
-            $http.get(revokeUrl)
-                .then(
-                function (response) {
+            // this part revokes token
+            $http.jsonp(revokeUrl,
+                {
+                    params: {
+                        callback: 'JSON_CALLBACK',
+                        format: 'jsonp'
+                    }
+                }).success(function () {
                     console.log('User signed out');
-                }, function (response) {
-                    console.log("Error while signing out");
-                }
-                );
+                });
+
+            // this part logs out from google account
+            // $http.jsonp('https://accounts.google.com/logout');
+
             removeUser();
             updateCurrentUser();
+
         };
 
         updateCurrentUser();
