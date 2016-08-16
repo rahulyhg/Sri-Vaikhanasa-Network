@@ -3,29 +3,27 @@ html {
     height: 100%;
     margin: 0;
     font: 400 15px/1.8 "Lato", sans-serif;
-    color: #777;
+    color: black;
 }
-
-.navbar-inverse .navbar-brand{
+.navbar-inverse .navbar-brand {
     color: white;
 }
-
 .opaque-navbar {
     background-color: #0C3C60;
     transition: background-color .5s ease 0s;
 }
-
 .opaque-navbar.opaque {
     /*background-color: transparent;*/
+    
     background-color: #0C3C60;
     opacity: 0.9;
     transition: background-color .5s ease 0s;
     border-bottom: 0px;
 }
-
 .parallax {
     position: relative;
     /*opacity: 0.8;*/
+    
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -33,7 +31,6 @@ html {
     background-image: url("../img/srinivasa-govinda.jpg");
     min-height: 100%;
 }
-
 .contact-parallax {
     position: relative;
     background-attachment: fixed;
@@ -42,13 +39,11 @@ html {
     background-size: cover;
     background-image: url("../img/contactus.jpg");
 }
-
 .contact-panel {
     color: #000;
-    background-color:white; 
+    background-color: white;
     opacity: 0.8;
 }
-
 .caption {
     position: absolute;
     left: 0;
@@ -56,43 +51,44 @@ html {
     width: 100%;
     text-align: center;
     color: #000;
-    background-color:white; 
+    background-color: white;
     opacity: 0.8;
 }
-
-.caption span.title{
-    line-height: 1.3em; 
+.caption span.title {
+    line-height: 1.3em;
     text-align: center;
-    font: normal normal normal 60px/1.4em raleway,sans-serif;
+    font: normal normal normal 60px/1.4em raleway, sans-serif;
     color: #0C3C60;
 }
-
-.caption p.tagline{
-    font: normal normal normal 18px/1.4em raleway,sans-serif;
+@media only screen and (max-width: 770px) {
+    .caption span.title {
+        line-height: 1.3em;
+        text-align: center;
+        font: normal normal normal 32px/1.4em raleway, sans-serif;
+        color: #0C3C60;
+    }
+}
+.caption p.tagline {
+    font: normal normal normal 18px/1.4em raleway, sans-serif;
     color: #0C3C60;
 }
-
 .aboutUs {
     color: #ddd;
-    background-color:#0C3C60;
-    text-align:center;
-    padding:50px 80px;
+    background-color: #0C3C60;
+    text-align: center;
+    padding: 50px 80px;
     text-align: justify;
 }
-
-.contactUsPanel{
+.contactUsPanel {
     padding: 50px 0px;
 }
-
 .pageMainTitle {
     letter-spacing: 5px;
     text-transform: uppercase;
     font: 20px "Lato", sans-serif;
     color: #ddd;
-    text-align:center;
+    text-align: center;
 }
-
-
 /*Footer Contact*/
 
 .footer-contact {
@@ -100,45 +96,35 @@ html {
     padding: 20px 0;
     color: #a8a8a8;
 }
-
 .footer-contact h3,
 .footer-contact p {
     color: #a8a8a8;
 }
-
 .footer-contact .title {
     border-bottom: 1px solid #000;
 }
-
 .footer-contact ul {
     list-style: none;
 }
-
 .footer-contact ul li {
     line-height: 24px;
 }
-
 .footer-contact ul li .glyphicon {
     font-size: 10px;
     top: 0;
 }
-
-
 /*Footer CSS*/
 
 footer {
-    background: #e5e7e9  ;
+    background: #e5e7e9;
 }
-
 footer .panel {
     box-shadow: none;
 }
-
 .collapse-footer p {
     font-size: 14px;
     line-height: normal;
 }
-
 .collapse-footer .panel {
     background: none;
     background-color: transparent;
@@ -146,23 +132,19 @@ footer .panel {
     margin-bottom: 0;
     border: none;
 }
-
 .collapse-footer .panel-heading {
     background-color: #707070;
     color: #231f20;
     border-radius: 0;
 }
-
 .collapse-footer .nav-footer {
     padding: 0;
     color: #312424;
     margin-left: 0;
 }
-
 .collapse-footer .nav-footer li {
     list-style: none;
 }
-
 .collapse-footer h5.title {
     border-bottom: 1px #2F7680 solid;
     padding-bottom: 0;
@@ -172,19 +154,16 @@ footer .panel {
     margin-top: 4px;
     margin-bottom: 4px;
 }
-
 .collapse-footer h5.title span {
     border-bottom: 3px #0C3C60 solid;
     bottom: 1px;
     padding-bottom: 4px;
 }
-
 .collapse-footer .col-lg-6 .nav-footer li {
     width: 45%;
     margin-right: 5%;
     float: left;
 }
-
 .collapse-footer .nav-footer li a {
     color: #312424;
     font-size: 14px;
@@ -192,13 +171,11 @@ footer .panel {
     padding: 5px 0;
     display: inherit;
 }
-
 .collapse-footer .nav-footer li a:hover {
     background: none;
     background-color: transparent;
     color: #000;
 }
-
 /*Copyrights CSS*/
 
 .copyright {
@@ -207,7 +184,6 @@ footer .panel {
     color: #b1b0b0;
     font-size: 12px;
 }
-
 .copyright-img {
     padding: 20px 0;
 }
