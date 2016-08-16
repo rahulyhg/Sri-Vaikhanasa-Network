@@ -1,5 +1,5 @@
 angular.module('svnUiApp')
-    .controller('google.signin.controller', function ($scope, $window) {
+    .controller('google.signin.controller', function ($scope, $window, $http) {
 
         function saveUser(user) {
             $window.localStorage.setItem("user", angular.toJson(user));
@@ -43,7 +43,15 @@ angular.module('svnUiApp')
         };
 
         function signOut() {
-            gapi.auth.signOut();
+            var revokeUrl = "https://accounts.google.com/o/oauth2/revoke?token=" + $scope.user.access_token;
+            $http.get(revokeUrl)
+                .then(
+                function (response) {
+                    console.log('User signed out');
+                }, function (response) {
+                    console.log("Error while signing out");
+                }
+                );
             removeUser();
             updateCurrentUser();
         };
