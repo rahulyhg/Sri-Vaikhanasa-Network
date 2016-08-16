@@ -58,6 +58,7 @@ angular.module('svnUiApp')
 
             // this part logs out from google account
             // $http.jsonp('https://accounts.google.com/logout');
+            // https://security.google.com/settings/security/permissions
 
             removeUser();
             updateCurrentUser();
